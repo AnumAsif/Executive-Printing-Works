@@ -151,7 +151,7 @@ function Home() {
         </div> */}
       </div>
       {/*  */}
-      <AboutUs />
+      
     </div>
   );
 }
