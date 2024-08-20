@@ -1,13 +1,36 @@
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+:root {
+  --darkmaroon:#702632;/*rgba(85,13,14,1)*/
+  --maroon:#912f40;/*rgba(161,56,66,1)*/
+  --cream: #fffffa;/*rgba(255,247,236,1)*/
+  --grey:#40434e; /*rgba(223,215,204,1)*/
+  --black:#080705;
+  --primarycream:#fffffa;
+  --primarycoral:#40434e; /*rgba(64, 67, 78, 1)*/
+  --accentwine:#702632;
+  --accentcordovan:#912f40;
+  --secondaryblack:#080705;
+}
+*{
+  margin:0;
+}
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue','Inter',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* font-family: 'Roboto'; */
+  font-family: "Playfair Display";
+  background:var(--cream);
+  font-family: 'poppins';
 }
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }

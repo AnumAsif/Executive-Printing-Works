@@ -1,0 +1,143 @@
+.hero {
+    width: 100vw;
+    height: 70vh;
+    background-image: 
+        linear-gradient(to right, rgba(64, 67, 78, 0.9) 50%, rgba(16, 44, 91, 0.2) 80%),
+        url("../../Components/Assets/printingmachine.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--primarycream);
+    padding: 0 19%;
+    box-sizing: border-box;
+    text-align: left;
+}
+
+/* Styling for the left side of the hero section */
+.hero-left {
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem; /* Add space between elements */
+}
+
+/* Responsive heading styles */
+.hero-left h1 {
+    font-weight: 600;
+    font-size: clamp(2rem, 5vw, 4rem); /* Responsive font size */
+    line-height: 1.2;
+    color: var(--accentcordovan);
+    /* opacity: 1; */
+    margin: 0; /* Remove default margins */
+}
+
+/* Responsive subheading styles */
+.hero-left h4 {
+    font-family: 'Poppins', serif;
+    font-weight: 500;
+    font-size: clamp(1rem, 2.5vw, 1.5rem); /* Responsive font size */
+    line-height: 1.4;
+    letter-spacing: 0.1em;
+    margin: 0; /* Remove default margins */
+}
+
+/* Flexbox for button container */
+.btn-div {  
+    display: flex;
+    gap: 1.5rem; /* Add space between buttons */
+    margin-top: 0.1rem; /* Add space above buttons */
+
+}
+
+/* Button styles */
+.btn-div button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    width: 230px;
+    height: 50px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    padding: 0 1rem; /* Ensure sufficient padding inside buttons */
+}
+
+.btn-div button:hover {
+    transform: scale(1.05); /* Slight scale for hover effect */
+}
+
+.learnmore {
+    background-color: var(--accentcordovan);
+    color: var(--primarycream);
+}
+
+.getaquote {
+    background-color: var(--primarycream);
+    color: var(--primarycoral);
+}
+
+/* Accessibility focus styles */
+.btn-div button:focus {
+    outline: 3px solid var(--primarycoral);
+}
+/* Responsive adjustments */
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        /* text-align: center; */
+        /* height: auto; */
+        padding: 10px 2%;
+    }
+
+    .hero-left {
+        max-width: 100%;
+        padding: 0;
+    }
+    .hero-right{
+        /* width:0%; */
+        display:none;
+    }
+    .btn-div {
+        /* flex-direction: row; */
+        gap: 1rem;
+    }
+
+    .btn-div button {
+        width: auto;
+        /* font-size: small; */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-right{
+        display: none;
+    }
+    .hero-left h1 {
+        font-size: clamp(1.5rem, 5vw, 2.5rem); /* Adjust font size for very small screens */
+    }
+
+    .hero-left h4 {
+        font-size: clamp(0.8rem, 2vw, 1.2rem); /* Adjust font size for very small screens */
+    }
+    .btn-div {
+        /* flex-direction: column; */
+        gap: 1rem;
+        /* width:100px; */
+    }
+
+    .btn-div button {
+        width: auto;
+        font-size: small;
+    }
+}
+/* background: linear-gradient(217deg, #f1f7e8, rgba(255,0,0,0) 70.71%),
+            linear-gradient(75deg, #f7dceb, rgba(0,255,0,0) 70.71%),
+            linear-gradient(336deg, #cbd9f0, rgba(0,0,255,0) 70.71%); */

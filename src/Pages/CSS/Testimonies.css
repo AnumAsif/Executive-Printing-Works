@@ -1,0 +1,143 @@
+.testimoniesdiv{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.testimoniesdiv h1{
+    color:var(--primarycoral);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 46px;
+    margin-bottom:20px;
+}
+.testimoniesdiv h4{
+    color:var(--accentcordovan);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 27px;
+    margin-bottom:20px;
+}
+.testimonialcards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    gap:20px;
+}
+.testimonycard{
+    display: flex;
+    width:630px;
+    height:250px;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    justify-content: center;
+    box-shadow: 5px 5px 20px -5px grey;
+    border-radius: 5px;
+    padding:30px;
+}
+.testimonycard img{
+    width:80px;
+    height:80px;
+    border-radius: 5px;
+}
+.card-left, .card-right{
+    padding:15px;
+    /* padding-top: 0;; */
+    /* top:0; */
+}
+.card-right{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.card-right p{
+    color:var(--primarycoral);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    margin-bottom:20px;
+    
+}
+
+.card-right h5{
+    color:var(--primarycoral);
+    font-size: 14px;
+    font-weight: bold;
+    line-height: 26px;
+    letter-spacing: 2px;
+    margin-bottom:20px;
+    opacity:0.5;
+    margin-bottom: 0;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .testimoniesdiv{
+        margin-top:100px;
+    }
+    .testimoniesdiv h1 {
+        font-size: 28px;
+        line-height: 38px;
+    }
+
+    .testimoniesdiv h4 {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .testimonycard {
+        padding: 15px;
+    }
+
+    .testimonialcards {
+        gap: 15px;
+        width:530px;
+        height:auto;
+    }
+
+    .testimonycard img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .card-right p {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .card-right h5 {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .testimoniesdiv h1 {
+        font-size: 24px;
+        line-height: 34px;
+    }
+
+    .testimoniesdiv h4 {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .testimonycard {
+        padding: 10px;
+    }
+
+    .testimonycard img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .card-right p {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .card-right h5 {
+        font-size: 10px;
+    }
+}

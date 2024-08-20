@@ -1,0 +1,56 @@
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primarycoral);
+    font-size: 16px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(64, 67, 78, 0.1);
+    flex-wrap: wrap;
+}
+
+.left {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.contact {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon {
+    height: 22px;
+}
+
+.text {
+    font-size: 14px;
+}
+
+.right {
+    display: flex;
+    gap: 20px;
+}
+
+.social-icon {
+    height: 25px;
+    width: auto;
+}
+
+@media (max-width: 768px) {
+    .topbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .left {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .right {
+        margin-top: 10px;
+    }
+}

@@ -1,0 +1,114 @@
+/* QuoteForm.css */
+
+.quote-form-container {
+    background-color: #fff; /* Light background */
+    padding: 40px;
+    max-width: 600px;
+    height: auto;
+    margin: 50px auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.quote-form-container h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primarycoral);
+}
+
+.quote-form-container p {
+    font-size: 16px;
+    color:var(--primarycoral);
+    margin-bottom: 20px;
+}
+
+.quote-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    gap: 10px;
+}
+
+.form-group input,
+.form-group textarea {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s;
+    font-family: 'inter';
+}
+
+.form-group textarea {
+    resize: none;
+    height: 200px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primarycoral)
+}
+
+.submit-button {
+    background-color: var(--accentcordovan); /* Maroon-like button */
+    color:var(--primarycream);
+    padding: 15px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: var(--accentwine); /* Darker shade on hover */
+}
+
+@media (max-width: 620px) {
+    .quote-form-container {
+        max-width: 600px;
+        padding: 2.5rem;
+    }
+
+    .name {
+        flex-direction: column;
+    }
+    .form-group textarea {
+        /* resize: none; */
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .name{
+        flex-direction: column;
+        border-radius: 5px;
+    }
+    
+    .form-group textarea {
+        /* resize: none; */
+        height: 100px;
+    }
+    .quote-form-container h1 {
+        font-size: 1.25rem;
+    }
+
+    .quote-form-container p {
+        font-size: 0.875rem;
+    }
+
+    .submit-button {
+        font-size: 1rem;
+        padding: 0.75rem;
+    }
+}

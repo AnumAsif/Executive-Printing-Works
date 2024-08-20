@@ -1,0 +1,129 @@
+
+.aboutus-tabs {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    cursor: pointer;
+    margin-left: -70px;
+    flex-wrap: wrap; /* Allows tabs to wrap on smaller screens */
+}
+
+.tab-link {
+    list-style: none;
+    color: var(--secondaryblack);
+    font-family: 'Poppins';
+    font-weight: 500;
+    padding: 16px 32px;
+    border: none;
+    outline: none;
+    position: relative;
+    transition: color 0.3s ease;
+    font-size: 18px;
+    line-height: 32px;
+    letter-spacing: 0.1%;
+    white-space: nowrap; /* Prevents text wrapping inside each tab */
+}
+
+/* Underline for active tab */
+.tab-link.active::after {
+    content: '';
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    bottom: -1px;
+    height: 4px;
+    background-color: var(--accentcordovan);
+    border-radius: 5px;
+}
+
+
+/* Large screens (desktops) */
+/* Medium screens (tablets) */
+@media (max-width: 1200px) {
+    .aboutus-tabs {
+        margin: 0 5px;
+    }
+
+    .tab-link {
+        font-size: 17px;
+        padding: 14px 28px;
+    }
+
+    .who-we-are p {
+        margin: 0 10px;
+    }
+
+    .missiondiv,
+    .visiondiv {
+        justify-content: center;
+        align-items: center;
+        margin: 0 -10px;
+    }
+
+    .missiondiv img,
+    .visiondiv img {
+        max-width: 500px;
+        height: auto;
+    }
+}
+
+/* Medium screens (tablets) */
+@media (max-width: 992px) {
+    .aboutus-tabs {
+        margin: 20px 0;
+        gap: 1px;
+    }
+
+    .tab-link {
+        font-size: 16px;
+        padding: 12px 24px;
+    }
+
+    .tab-link.active::after {
+        left: 30px;
+        right: 30px;
+    }
+}
+
+/* Small screens (mobile devices) */
+@media (max-width: 768px) {
+    .aboutus-tabs {
+        justify-content: center;
+        margin: 0;
+        gap: 1px;
+    }
+
+    .tab-link {
+        font-size: 15px;
+        padding: 10px 20px;
+        flex: 1 0 auto; /* Allow tabs to shrink and wrap */
+    }
+
+    .tab-link.active::after {
+        left: 30px;
+        right: 80px;
+    }
+}
+
+/* Extra small screens (very small mobile devices) */
+@media (max-width: 576px) {
+    .aboutus-tabs {
+        justify-content: center;
+        margin:20px 0;
+        gap: 1px;
+    }
+
+    .tab-link {
+        font-size: 14px;
+        padding: 8px 16px;
+        flex: 1 0 auto; /* Allow tabs to shrink and wrap */
+    }
+
+    .tab-link.active::after {
+        left: 35px;
+        right: 35px;
+    }
+}
+

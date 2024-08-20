@@ -3,11 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {ServiceProvider} from './Context/ServiceContext';
+import {TestimonyProvider} from './Context/TestimonyContext';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
+   <React.StrictMode>
+     <ServiceProvider>
+       <TestimonyProvider>
+          <App />
+       </TestimonyProvider>
+     </ServiceProvider>
   </React.StrictMode>
 );
 
