@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState} from 'react';
 import './QuotationForm.css';
 import axios from 'axios';
 import DOMPurify from 'dompurify';

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPrint, faArrowRight, faFileCirclePlus, faFileCircleCheck, faFileExport } from '@fortawesome/free-solid-svg-icons'; 
 import Testimonies from './Testimonies';
 // import CurvedArrow from 'react-curved-arrow';
-import AboutUs from './AboutUs';
+// import AboutUs from './AboutUs';
 import Services from './Services'; 
 
 function Home() {
@@ -151,7 +151,7 @@ function Home() {
         </div> */}
       </div>
       {/*  */}
-      git 
+      {/* git  */}
     </div>
   );
 }

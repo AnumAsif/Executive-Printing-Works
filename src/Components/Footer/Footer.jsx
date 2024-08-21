@@ -1,4 +1,4 @@
-import React, {useRef } from 'react';
+import React from 'react';
 import './Footer.css';
 import epw_logo from '../Assets/epwlogo.png'
 import {Link} from 'react-router-dom'
@@ -24,7 +24,7 @@ const Footer = () => {
                 <div className="sitemap">
                     <h4>Quick Links</h4>
                     <div className="footer-links">
-                        <Link to='/aboutus' onClick={scrollToTop}>About</Link>
+                        <Link to='/about' onClick={scrollToTop}>About</Link>
                         <Link to='/services' onClick={scrollToTop}>Services</Link>
                         <Link to='/product' onClick={scrollToTop}>Products</Link>
                         <Link to='/contact' onClick={scrollToTop}>Contact</Link>
@@ -56,26 +56,6 @@ const Footer = () => {
         </div>    
     );
 };        
-           {/* <ul className="footer-links">
-                <li><Link to='/aboutus' onClick={scrollToTop}>About</Link></li>
-                <li><Link to='/services' onClick={scrollToTop}>Services</Link></li>
-                <li><Link to='/product' onClick={scrollToTop}>Products</Link></li>
-                <li><Link to='/contact' onClick={scrollToTop}>Contact</Link></li>
-            </ul>
-            <div className="footer-social-icon">
-                <div className="footer-icons-container">
-                    <Link to=''><img src={instagram_logo} alt=""/></Link>
-                </div>
-                <div className="footer-icons-container">
-                    <Link to=''><img src={facebook_logo} alt=""/></Link>
-                </div>
-                <div className="footer-icons-container">
-                    <Link to=''><img src={whatsapp_logo} alt=""/></Link>
-                </div>
-            </div>
-            <div className="footer-copyright">
-                <hr />
-                <p>Copyright @2024 All Rights Reserved</p>
-            </div> */}
+       
 
 export default Footer;

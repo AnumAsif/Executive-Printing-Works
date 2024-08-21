@@ -3,7 +3,7 @@ import './Navbar.css';
 import logo from '../Assets/epwlogo.png';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faBars, faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function Navbar(){
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
