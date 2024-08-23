@@ -21,7 +21,7 @@ function App() {
         <Topbar/>
         <Navbar/>
         <Routes>
-          <Route path='/' element={<Home/>} />
+          <Route path='/Executive-Printing-Works/' element={<Home/>} />
           <Route path='/product' element={<Product/>}>
             <Route path=':productID' element={<Product/>}/>
           </Route>  
