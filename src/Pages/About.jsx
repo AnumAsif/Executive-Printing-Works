@@ -1,4 +1,5 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
+import { useLocation } from 'react-router-dom';
 import './CSS/About.css';
 import Hero2 from '../Components/Hero2/Hero2.jsx';
 import aboutUsImage from '../Components/Assets/printingpaper.jpg';
@@ -10,10 +11,29 @@ import MachinesSlider from './MachinesSlider.jsx';
 
 export default function About() {
     const [activeTab, setActiveTab] = useState('who-we-are');
+    const location = useLocation();
+     // Function to scroll to the top
+     const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    // Update the tab based on the URL query parameter and scroll to top
+    useEffect(() => {
+        const params = new URLSearchParams(location.search);
+        const tab = params.get('tab');
+        if (tab) {
+            setActiveTab(tab);
+            // Wait for the next tick to ensure the tab content has rendered
+            setTimeout(() => {
+                scrollToTop();
+            }, 100);
+        }
+    }, [location]);
 
     const handleTabClick = (tabId) => {
         setActiveTab(tabId);
     };
+
     const tabs = [
         { id: 'who-we-are', label: 'Who We Are' },
         { id: 'our-director', label: 'Our Directors' },
@@ -25,51 +45,45 @@ export default function About() {
         <Hero2 image={aboutUsImage} heading="About Us" />
         <Tabs tabs={tabs} activeTab={activeTab} handleTabClick={handleTabClick} />
 
-        {/* <ul className="aboutus-tabs">
-            <li className={`tab-link ${activeTab === 'who-we-are' ? 'active' : ''}`} onClick={() => handleTabClick('who-we-are')}>Who We Are</li>
-            <li className={`tab-link ${activeTab === 'our-director' ? 'active' : ''}`} onClick={() => handleTabClick('our-director')}>Our Directors</li>
-            <li  className={`tab-link ${activeTab === 'equipment' ? 'active' : ''}`} onClick={() => handleTabClick('equipment')}>Our Equipment</li>
-            <li  className={`tab-link ${activeTab === 'our-history' ? 'active' : ''}`} onClick={() => handleTabClick('our-history')}>Our History</li>
-        </ul> */}
-        <div className="tab-content">
+        <div className="about-tab-content">
             <div className={ `who-we-are ${activeTab === 'who-we-are' ? 'active' : ''}`}>
-                 {/* <h2>Who We Are</h2> */}
-                <p><strong>Executive Printing Works Ltd</strong> was established in the late 1970’s, and is now recognised as one of the leading printing presses in Nairobi, Kenya. We are conveniently located in the city of Nairobi and currently employ over 50 highly-trained production and administrative staff. Executive has earned a good reputation in promptness, product quality and pricing standards and has delivered the very best to its customers.</p>
-                <p>Executive sees itself as a part of the broader enterprise and looks to develop long-term mutually beneficial business relationship. We are committed to provide reliable and professional service at all times.</p>
+                 <h1>Who We Are</h1>
+                <h4>Executive Printing Works Ltd was established in the late 1970’s, and is now recognised as one of the leading printing presses in Nairobi, Kenya. We are conveniently located in the city of Nairobi and currently employ over 50 highly-trained production and administrative staff. Executive has earned a good reputation in promptness, product quality and pricing standards and has delivered the very best to its customers.</h4>
+                <h4>Executive sees itself as a part of the broader enterprise and looks to develop long-term mutually beneficial business relationship. We are committed to provide reliable and professional service at all times.</h4>
                 <div className="missionvision">
                     <div className="missiondiv">
+                        <h3>Our Mission</h3>
                         <div className="mission">
-                            <h1>Our Mission</h1>
+                            <img src={about1} alt="" className="missionimg"/>
                             <p>Our Mission is to provide high-quality print services to our clients with timely delivery and customer satisfaction. The passion we have for our work enables us to undertake all of our clients' jobs. We constantly strive to deliver the highest-quality products possible. There is no greater satisfaction than delivering a finished product that helps a client reach their goals and objectives.</p>
                         </div>
-                        <img src={about1} alt="" className="missionimg"/>
                     </div>
                     <div className="visiondiv">
-                        <img src={about2} alt="" className="visionimg"/>
+                        <h3>Our Vision</h3>    
                         <div className="vision">
-                            <h1>Our Vision</h1>    
+                            <img src={about2} alt="" className="visionimg"/>
                             <p >Our Vision is to become the leading printing company in Kenya by providing high quality and reliable service to our clientele. We make use of the finest quality materials in the production of client orders ensuring quality, consistency, and timely delivery. We strive to always be there with quick and expert advice, friendly customer service. Our goal is to meet and exceed your expectations.</p>
                         </div>
                     </div>
                 </div>
             </div>
             <div className={`directors ${activeTab === 'our-director' ? 'active' : ''}`}>
-                {/* <h2>Our Director</h2> */}
+                <h1>Our Directors</h1>
                 {/* <p className="directorP">Meet the Directors of Executive Printing Works, a family-owned business dedicated to providing high-quality printing services in Kenya.</p> */}
                 <div className="director-info m">
                     <div className="info-left">
                         <img src={director} alt=""/>
-                        <h2>Muhamed Bilal Cockar</h2>
-                        <p>Founder & CEO of the Company</p>
+                        <h1>Muhamed Bilal Cockar</h1>
+                        <h4>Founder & CEO of the Company</h4>
                     </div>
                     <div className="info-right">
-                        <h1>Background</h1>
+                        <h3>Background</h3>
                         <h2>Professional Journey</h2>
                         <p>Mohamed began his career as an accountant in a reputable company, where he gained valuable experience in financial management and business operations. Inspired by his passion for printing and entrepreneurship, he took a bold step to start his own printing business.</p>
                         <h2>Entrepreneurial Journey</h2>
                         <p><span>Starting from Scratch:</span> With determination and vision, Mohamed purchased a second-hand printing machine to kickstart his business. Through hard work and perseverance, he gradually expanded the company's capabilities and infrastructure.</p>
                         <p><span>Company Growth:</span> Today, Executive Printing Works boasts a total of 15 machines, including offset printing machines, digital machines, dying, cutting, and gluing machines, among others. Mohamed's relentless pursuit of excellence and innovation has propelled the company's growth and success.</p>
-                        <h1>Legacy and Impact</h1>
+                        <h3>Legacy and Impact</h3>
                         <h2>Pillar of the Company</h2>
                         <p>Mohamed's unwavering commitment and dedication have been the driving force behind the company's journey from humble beginnings to its current stature. His leadership and vision have shaped the company's culture and values, inspiring employees to strive for excellence.</p>
                         <h2>Enduring Legacy</h2>
@@ -79,17 +93,17 @@ export default function About() {
                 <div className="director-info w">
                     <div className="info-left">
                         <img src={director} alt=""/>
-                        <h2>Wajid Cockar</h2>
-                        <p>Finance and Managing Director</p>
+                        <h1>Wajid Cockar</h1>
+                        <h4>Finance and Managing Director</h4>
                     </div>
                     <div className="info-right">
-                        <h1>Background</h1>
+                        <h3>Background</h3>
                         <h2>Educational Journey</h2>
                         <p>Wajid graduated in Business I.T., combining his passion for business and technology. His educational background equipped him with valuable skills in management and information technology.</p>
                         <h2>Professional Journey</h2>
                         <p><span>Joining the Family Business:</span> In 2010, Wajid embarked on his professional journey by joining his father's printing business. Since then, he has been an integral part of the company's operations, bringing fresh perspectives and innovative ideas to the table.</p>
                         <p><span>Company Growth:</span> Wajid's dedication and expertise as the Finance and Managing Director have played a crucial role in the company's growth and innovation. He has effectively managed the financial aspects of the business while also spearheading various initiatives to ensure its success.</p>
-                        <h1>Family Dynamics</h1>
+                        <h3>Family Dynamics</h3>
                         <h2>Collaborative Partnership</h2>
                         <p>Working alongside his father and other family members, Wajid embodies the spirit of collaboration and teamwork within the family. Together, they share a common vision for the company's success and work hand-in-hand to achieve their goals.</p>
                         <h2>Continuing the Legacy</h2>
@@ -99,17 +113,17 @@ export default function About() {
                 <div className="director-info s">
                     <div className="info-left">
                         <img src={director} alt=""/>
-                        <h2>Suhayb Cockar</h2>
-                        <p>Marketing and Managing Director</p>
+                        <h1>Suhayb Cockar</h1>
+                        <h4>Marketing and Managing Director</h4>
                     </div>
                     <div className="info-right">
-                        <h1>Background</h1>
+                        <h3>Background</h3>
                         <h2>Educational Journey</h2>
                         <p>Suhayb obtained a degree in Marketing and Business I.T., equipping him with a solid foundation in both marketing principles and technological applications in business.</p>
                         <h2>Professional Journey</h2>
                         <p><span>Joining the Family Business:</span> In 2014, Suhayb brought his expertise in marketing to the family business, joining as the Marketing and Managing Director. Since then, he has been instrumental in developing and executing marketing strategies to promote the company's services and expand its reach.</p>
                         <p><span>Company Growth:</span> Suhayb's role as the Marketing and Managing Director involves leading the company's marketing efforts with strategic planning and execution. He has successfully implemented campaigns to enhance brand awareness and drive customer engagement.</p>
-                        <h1>Legacy and Impact</h1>
+                        <h3>Legacy and Impact</h3>
                         <h2>Collaborative Leadership</h2>
                         <p>Working alongside other family members, Suhayb fosters a collaborative environment where ideas are shared and decisions are made collectively. His leadership style emphasizes teamwork and mutual respect.</p>
                         <h2>Continuing Growth</h2>
@@ -121,13 +135,16 @@ export default function About() {
             <div className={`equipment ${activeTab === 'equipment' ? 'active' : ''}`}>
                 {/* <h2>Equipment</h2> */}
                 <h1>State-of-the-Art Printing Technology</h1>
-                <h5>We pride ourselves on using cutting-edge printing machines and technology to deliver top-quality prints. Our vision is to consistently provide the best quality in every print job we undertake. With our deep understanding of modern printing techniques and market trends, we've established ourselves as industry leaders where quality is paramount.</h5>
-                <MachinesSlider/>
-                <h1>Pre-Press: Precision from the Start</h1>
+                <h4>We pride ourselves on using cutting-edge printing machines and technology to deliver top-quality prints. Our vision is to consistently provide the best quality in every print job we undertake. With our deep understanding of modern printing techniques and market trends, we've established ourselves as industry leaders where quality is paramount.</h4>
+                <div className="about-machine-slider">
+                    <MachinesSlider/>
+                </div>
+                {/* <br /> */}
+                <h3>Pre-Press: Precision from the Start</h3>
                 <p>With the constant change of technology, we currently use the Computer-to-Plate (CTP) System, in which Printing Plates are made directly from the Computer, eliminating the process of making Colour Separations / Films, resulting in faster turnaround times with our CTP Machine. We undertake the following Pre-Press work in-house:</p>
                 <p>Digital Colour Proofs: Using EFI Technology for accurate color matching.</p>
                 <p>CTP Plates with Agfa Technology</p>
-                <h1>Press: Quality in Every Print</h1>
+                <h3>Press: Quality in Every Print</h3>
                 <p>Our high-quality printing machines, all from Heidelberger Druckmaschinen AG, Germany, ensure flawless print jobs every time:</p>
                 <ul>
                     <li>Heidelberg 5-Colour Press</li>
@@ -137,11 +154,11 @@ export default function About() {
                     <li>Heidelberg K Offset Series Press</li>
                     <li>Heidelberg M Offset Series Press</li>
                 </ul>
-                <h1>Post-Press: Perfecting the Finish</h1>
+                <h3>Post-Press: Perfecting the Finish</h3>
                 <p>Once the print job is done, it moves to our Post-Press section, where it's finished to perfection.</p>
-                <p><strong>Stahl Folding Machine:</strong>Precision folding with German engineering.</p>
-                <p><strong>Polar Guillotine Machines:</strong>Automatic trimming for exact measurements, from Polar-Mohr Maschinenvertriebsgesellschaft GmbH & Co. KG, Germany.</p>
-                <h1>Additional Post-Press Capabilities</h1>
+                <p><strong>Stahl Folding Machine:</strong> Precision folding with German engineering.</p>
+                <p><strong>Polar Guillotine Machines:</strong> Automatic trimming for exact measurements, from Polar-Mohr Maschinenvertriebsgesellschaft GmbH & Co. KG, Germany.</p>
+                <h3>Additional Post-Press Capabilities</h3>
                 <p>Our Post-Press department is equipped with a range of specialized machines to meet diverse finishing needs:</p>
                 <ul>
                     <li>Book Binding Machine</li>

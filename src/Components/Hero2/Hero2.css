@@ -29,3 +29,9 @@
     margin-bottom: 10px;
    
 }
+@media (max-width: 428px){
+    .hero2 h1{
+        font-size:32px;
+        margin-bottom:25px;
+    }
+}

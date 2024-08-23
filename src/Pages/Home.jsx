@@ -6,16 +6,31 @@ import Colorchart from '../Components/Assets/colorchart.jpg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPrint, faArrowRight, faFileCirclePlus, faFileCircleCheck, faFileExport } from '@fortawesome/free-solid-svg-icons'; 
 import Testimonies from './Testimonies';
-// import CurvedArrow from 'react-curved-arrow';
-// import AboutUs from './AboutUs';
 import Services from './Services'; 
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+
+  const navigate = useNavigate();
+
+  const handleGetAQuoteClick = () => {
+    navigate('/contact?tab=quotation-form');
+    // handleNavigate()
+  };
+  const handleGetConsultation = () => {
+    navigate('/contact?tab=contact-us');
+  };
+  const handleLearnMoreServices = () =>{
+    navigate('/detailedservices?tab=printing-consultation');
+  }
+  const handleLearnMore = () => {
+    navigate('/about?tab=who-we-are');
+  };
   return (
     <div className="home">
       {/* HERO DIV */}
       <div className="hero-container">
-        <Hero />
+        <Hero/>
       </div>
 
       {/* ABOUTUS DIV */}
@@ -24,7 +39,7 @@ function Home() {
           <h4>WE ARE PROFESSIONAL</h4>
           <h1>Professional Printing and Finishing Services for Individuals and Businesses</h1>
           <p>At Executive Printing Works, we offer both Offset and Digital Printing to meet your unique needs. Our core services include printing consultation, artwork editing, printing, finishing, and delivery, ensuring a seamless process from start to finish. We pride ourselves on our state-of-the-art machinery—using Heidelberg equipment for offset printing and finishing, and RICOH for digital printing. Our exceptional team is dedicated to providing top-notch service, from proofreading to final delivery. Discover the quality and reliability of Executive Printing Works, where your printing needs are our priority.</p>
-          <button className="learnmorebtn">Learn More <FontAwesomeIcon className='icon' icon={faArrowRight} /></button>
+          <button className="learnmorebtn" onClick={handleLearnMoreServices}>Learn More <FontAwesomeIcon className='icon' icon={faArrowRight} /></button>
         </div>
         <div className="aboutus1-right">
           <img src={Crawford} alt="stack of paper forming a complex pattern" />
@@ -48,8 +63,8 @@ function Home() {
           <h1>We Provide Quality service at an affordable price!</h1>
           <h4>Is your Artwork Ready? Send it to us today and get a quote or a free consultation </h4>
           <div className="consult-btn-div">
-            <button className="consultbtn">Consultation</button>
-            <button className="getaquotebtn">Get a Quote</button>
+            <button className="consultbtn"onClick={handleGetConsultation}>Consultation</button>
+            <button className="getaquotebtn" onClick={handleGetAQuoteClick}>Get a Quote</button>
           </div>
         </div>
       </div>
@@ -118,7 +133,7 @@ function Home() {
           <h4>WE ARE PROFESSIONAL</h4>
           <h1>Who We Are</h1>
           <p>We provide fast, affordable, and high-quality printing services for all your needs. From business cards, brochures, and flyers to presentations, proposals, and even booklets, we ensure your documents are printed with precision and professionalism.</p>
-          <button>Find Out More<FontAwesomeIcon className='icon' icon={faArrowRight} /></button>
+          <button onClick={handleLearnMore} >Find Out More<FontAwesomeIcon className='icon' icon={faArrowRight} /></button>
         </div>
       </div>
 
@@ -138,20 +153,7 @@ function Home() {
       {/* TESTIMONIALS DIV */}
       <div className="testimonialdiv">
         <Testimonies/>
-        {/* <h4>TESTIMONIAL</h4>
-        <h1>What Clients say about us</h1>
-        <div className="testimonialcard">
-          <div className="card-left">
-            <img src="" alt=""/>
-          </div>
-          <div className="card-right">
-            <p className="testimony"></p>
-            <h5 className="clientname"></h5>
-          </div>
-        </div> */}
       </div>
-      {/*  */}
-      {/* git  */}
     </div>
   );
 }

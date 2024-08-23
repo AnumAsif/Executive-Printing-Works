@@ -147,7 +147,7 @@ const QuotationForm = () => {
     };
 
     return (
-        <div className="quotation-form-container">
+        <div className="quotation-form-container" id='quotation-form-container'>
             <h1>Get a Quote</h1>
             <p>Get a Quote within a Day Upon Form Submission</p>
             <form onSubmit={handleSubmit} encType="multipart/form-data" className="quotation-form">

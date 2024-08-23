@@ -6,27 +6,24 @@
     /* margin: 25px 0;   */
     /* border-radius: 5px; */
     /* overflow: hidden;  */
-    
+    color:red;
 }
 .container {
-    margin: 45px auto;
+    margin: 20px auto;
     width: 100%;
     height: auto;
     border-color: white;
     border-radius: 5px;
+
     
 }
 
 .slide img {
     display: flex;
-    margin: 0 auto;
     height: 25vh;
-    /* object-fit: cover; */
     width: 95%;
-    margin-top: 10px;
+    margin: 20px 0;
     border-radius: 5px;
-    /* margin-left: 10px; */
-    /* height: 50%; */
 }  
 
 .slide:focus{
@@ -46,10 +43,40 @@
 
 /* Slider Dots */
 .slick-dots li button:before {
-    color: var(--primarycream);
-    /* margin:25px; */
+    color: var(--primarycoral);
+    margin:10px;
+    /* padding:10px; */
+    
+}
+/* Force color change using higher specificity */
+.slick-prev:before, 
+.slick-next:before {
+    
+    color: var(--accentcordovan) !important; /* Change arrow color on hover */
+   
 }
 
+/* Change the background color of the arrows */
+.slick-prev,
+.slick-next {
+    background-color: transparent !important; /* Change to transparent or any color */
+    width: 40px !important; /* Increase width */
+    height: 40px !important; /* Increase height */
+    font-size: 30px !important; /* Increase font size for the arrow */
+    transform: scale(1.5) !important; /* Scale up the arrow */
+}
+.slick-prev {
+    left: -40px !important; /* Adjust position of the left arrow */
+}
+
+.slick-next {
+    right: -20px !important; /* Adjust position of the right arrow */
+}
+/* Change hover color */
+.slick-prev:hover:before,
+.slick-next:hover:before {
+    color: var(--primarycoral) !important; /* Change to your desired color */
+}
 
 
 @media (max-width: 768px) {
@@ -57,18 +84,13 @@
         font-size: 14px;
     }
     .machines-slider{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-self: center;
-        /* padding-bottom:-100px; */
+        /* padding-bottom:-100px;
         padding:20px;
-        /* margin:20px; */
+        margin:20px; */
     }
     .slide {
-        align-items: center;
-        justify-content: center;
-        align-self: center;
+        justify-content:center !important;
+        align-items: center !important;
         padding:0;
         
         
@@ -80,6 +102,16 @@
         border-radius: 5px;
         padding:0;
         margin:0;
+    }
+    .slick-dots li{
+        padding:0 !important;
+        margin:0 !important;
+    }
+    .slick-dots li button:before {
+        color: var(--primarycoral);
+        margin-left:-15px;
+        /* padding:10px; */
+        
     }
 }
 

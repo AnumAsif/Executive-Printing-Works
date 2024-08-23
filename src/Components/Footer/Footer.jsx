@@ -7,10 +7,11 @@ import { faInstagram, faFacebook, faTwitter, faPinterest } from '@fortawesome/fr
 
 const Footer = () => {
     const scrollToTop = () => {
-        window.scrollTo({
+        setTimeout(()=>{
+            window.scrollTo({
             top: 0,
             behavior: 'smooth'
-        });
+        })}, 100);
     };
 
     return (
@@ -24,8 +25,8 @@ const Footer = () => {
                 <div className="sitemap">
                     <h4>Quick Links</h4>
                     <div className="footer-links">
-                        <Link to='/about' onClick={scrollToTop}>About</Link>
-                        <Link to='/services' onClick={scrollToTop}>Services</Link>
+                        <Link to='/about?tab=who-we-are' onClick={scrollToTop}>About</Link>
+                        <Link to='/detailedservices' onClick={scrollToTop}>Services</Link>
                         <Link to='/product' onClick={scrollToTop}>Products</Link>
                         <Link to='/contact' onClick={scrollToTop}>Contact</Link>
                     </div>

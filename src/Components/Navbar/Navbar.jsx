@@ -4,9 +4,18 @@ import logo from '../Assets/epwlogo.png';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faBars, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar(){
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsMobileMenuOpen(false); 
+  };
+
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
@@ -18,11 +27,11 @@ function Navbar(){
       </div>
       <div className={`nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
         <ul>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-          <li><Link to="/">Services</Link></li>
-          <li><Link to="/">Product</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
+          <li><Link to="/" onClick={() => handleNavigate('/')}>Home</Link></li>
+          <li><Link to="/about" onClick={() => handleNavigate('/about')}>About</Link></li>
+          <li><Link to="/detailedservices" onClick={() => handleNavigate('/detailedservices')}>Services</Link></li>
+          <li><Link to="/product" onClick={() => handleNavigate('/product')}>Product</Link></li>
+          <li><Link to="/contact" onClick={() => handleNavigate('/contact')}>Contact</Link></li>
         </ul>
       </div>
       <div className="nav-login">

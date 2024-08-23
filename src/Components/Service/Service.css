@@ -17,6 +17,12 @@
     border-radius: 5px;
     box-sizing: border-box;
     background-color: #fff; /* Add a background color if needed */
+    /* height:600px; */
+    /* flex: 1 1 300px;  */
+    max-width: 400px; /* Minimum width of each item */
+    height: 500px; /* Fixed height for equal height */
+    box-sizing: border-box; 
+    
 }
 
 .service h2, .service p {

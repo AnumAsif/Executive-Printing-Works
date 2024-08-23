@@ -37,11 +37,11 @@ const ContactForm = () => {
             </div>
 
             <div className="form-map-container">
-                <div className="contact-form-section">
+                <div className="contact-form-section" id='contact-form-section'>
                     <h3>Put Life Into Your Ideas With Us</h3>
                     <p>Let’s discuss your project and find out what we can do to provide value.</p>
                     <form className="contact-form">
-                        <div className="form-group">
+                        <div className="contact-form-group">
                             <input type="text" name="name" placeholder="Name" required />
                             <input type="text" name="phone" placeholder="Phone No." required />
                         </div>

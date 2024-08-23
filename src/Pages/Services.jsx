@@ -12,7 +12,7 @@ const Services = () => {
       {/* <hr/> */}
       <div className='service-types'>
         { service_info.map((service,i)=>{
-          return <Service key={i} id={service.id} name={service.name} image={service.image} info={service.info} detailedinfo={service.detailedinfo}/>})}
+          return <Service key={i} id={service.id} name={service.name} alias={service.alias} image={service.image} info={service.info} detailedinfo={service.detailedinfo}/>})}
       </div>
     </div>
   )

@@ -1,3 +1,6 @@
+.home{
+    display:block;
+}
 .hero-container {
     width: 100vw;
     height: 70vh;
@@ -8,33 +11,32 @@
     margin-right: -50vw;
     background-size:cover;
 }
-/* aboutus section after hero section  */
 .aboutus1{
     display:flex;
     justify-content: space-between;
     align-items: center;
-    margin:0;
-    padding:10% 0;
-    /* background-color: blue; */
+    margin:0 20px;
+    padding:8% 0;
+    top:0;
+    gap:20px;
 }
 .aboutus1-left{
-    width:50%;
-    margin-top:-5.5%;
-    /* background-color: red; */
+    width:60%;
+    
 }
 .aboutus1-left h1{
     color:var(--primarycoral);
     font-size: 36px;
     font-weight: 600;
     line-height: 46px;
-    margin:20px;
+    margin:20px 0;
 }
 .aboutus1-left h4{
     color:var(--accentcordovan);
     font-size: 18px;
     font-weight: 500;
     line-height: 27px;
-    margin:20px;
+    /* margin:20px; */
 }
 .aboutus1-left p{
     color:var(--accentcoral);
@@ -42,7 +44,7 @@
     font-size: 18px;
     font-weight: 400;
     line-height: 27px;
-    margin:20px;
+    margin:20px 0;
 }
 .learnmorebtn{
     display: inline-flex;
@@ -52,21 +54,20 @@
     height:50px;
     border:none;
     border-radius:5px;
-    /* gap:px; */
     padding-left: 16px;
     padding-right:24px;
     font-size: 18px;
     font-weight: 500;
     line-height: 27px;
-    margin:20px;
+    margin:20px 0;
     background-color: var(--accentcordovan);
     color:var(--primarycream)
 }
 .learnmorebtn:hover {
-    transform: scale(1.05); /* Slight scale for hover effect */
+    transform: scale(1.05); 
 }
 .aboutus1-right{
-    width:50%;
+    width:40%;
     display: inline-flex;
     justify-content: right;
     align-items: center;
@@ -74,20 +75,20 @@
 }
 .aboutus1-right img{
     width: 460px;
-    height:617px;
+    height:515px;
     box-shadow: 5px 5px 5px -5px grey;
 }
 .div-overlap{
+    box-sizing: border-box;
     background-color: var(--accentwine);
-    width:230px;
+    width:260px;
     height:auto;
-    /* height:330px; */
     margin-left:-28%;
     color: var(--primarycream);
     border:none;
     border-radius: 5px;
     padding:8% 6%;
-    /* box-shadow: 5px 5px 20px -5px grey; */
+    box-shadow: 5px 5px 20px -5px grey;
 }
 .printicon{
     font-size: 80px;
@@ -102,43 +103,52 @@
 
 }
 .hyphens-container {
-    display: flex; /* Ensures hyphens are next to each other */
-    align-items: center; /* Aligns hyphens vertically */
-  }
+    display: flex; 
+    align-items: center;   }
   
   .hyphen {
     display: inline-block;
-    height: 5px; /* Set the height of the hyphens */
-    border-radius: 5px; /* Rounds the corners */
-    margin-right: 8px; /* Optional: space between hyphens */
+    height: 5px; 
+    border-radius: 5px; 
+    margin-right: 8px; 
   }
   
   .hyphen-1 {
-    width: 28px; /* Width of the first hyphen */
+    width: 28px; 
     background-color:var(--primarycream)
   }
   
   .hyphen-2 {
-    width: 18px; /* Width of the second hyphen */
+    width: 18px; 
     background-color:var(--primarycoral)
   }
-  /* Media Queries for Responsiveness */
+.testimonialdiv{
+    margin-bottom:100px;
+} 
+@media (max-width:1224px){
+    .aboutus1 h1{
+        font-size: 32px;;
+    }
+    .aboutus1 p{
+       font-size: 18px;
+    }
+    
+}
 @media (max-width: 768px) {
     .aboutus1{
         flex-direction: column-reverse;
     }
     .aboutus1-left{
-        /* background-color: red; */
-        margin-top:60px;
+        margin-top:20px;
         padding-left:25px;
         width:100vw;
     }       
    
     .aboutus1-right {
         padding:10px;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        margin-top: 20px;
         position:relative;
         width:100vw;
         height:50vh;    
@@ -146,14 +156,12 @@
     
 
     .div-overlap {
-        position: absolute; /* Set position to relative */
-        top: 25%;
-        left:10%;
-        /* transform: translate(-50%, -50%); */
-        margin-left: 0;
-        transform: none; /* Remove translate adjustments */
-        z-index: 2; /* Keep it on top */
-        
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        position: absolute; 
+        z-index: 2;   
+        width:400px; 
     }
 
     .printicon {
@@ -161,28 +169,40 @@
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 565px) {
     .aboutus1{
         flex-direction: column-reverse  ;
+        margin:0;
+        padding:0;
     }
-    .aboutus1-left h1 {
-        font-size: 1.8rem; /* Further reduce font size on smaller screens */
+    .aboutus1-left{
+        box-sizing: border-box;
+        margin:0;
+        padding:20px;
     }
-
-    .learnmorebtn {
-        width: auto; /* Full width button on mobile */
-        padding: 10px;
+    .aboutus1-left h1{
+        font-size: 30px;
     }
-    .aboutus1-right img{
-        width:100vw;
-        height:auto;
-        background-color: red;
+    .aboutus1-right img {
+        width:100%;
+        /* height:500vh; */
+        /* margin-top: 80px; */
+        margin-right:-20px;
+        /* padding-top:20px; */
+        max-width: 300px; 
+      }
+    .aboutus1-right{
+        box-sizing: border-box;
+        margin-top: 20px;
+        margin-right:20px;
+        /* height:400px ; */
     }
     .div-overlap {
-        width: 80vw;
-        overflow-x: hidden;
-        margin-left: -30px;
-        padding-left:50px;
+        /* margin-top:0; */
+        flex-wrap: wrap;
+        max-width: 250px;
+        margin-left:10px;
+        
     }
 }
 /* consulatation container styling*/
@@ -212,10 +232,6 @@
     align-items: center;
     justify-content: center;
     color: var(--primarycream);
-    /* padding:0; */
-    /* padding: 0 19%; */
-    /* box-sizing: border-box; */
-    /* text-align: left; */
 }
 .consult h1, .consult h4, .consult-btn-div{
     margin:20px;
@@ -235,8 +251,8 @@
 }
 .consult-btn-div{
     display: flex;
-    gap: 1.5rem; /* Add space between buttons */
-    margin-top: 0.1rem; /* Add space above buttons */
+    gap: 1.5rem; 
+    margin-top: 0.1rem; 
 }
 .consult-btn-div button{
     font-family: 'Poppins', sans-serif;
@@ -248,7 +264,7 @@
     border-radius: 5px;
     border: none;
     cursor: pointer;
-    padding: 0 1rem; /* Ensure sufficient padding inside buttons */
+    padding: 0 1rem; 
 }
 .consult-btn-div button:hover{
     transform: scale(1.05); 
@@ -260,15 +276,15 @@
 .getaquotebtn:active{
     background-color: var(--primarycoral);
 }
-/* Responsive Adjustments */
+
 @media (max-width: 768px) {
     .consult h1 {
-        font-size: 1.875rem; /* 30px */
+        font-size: 1.875rem; 
         text-align: center;
     }
 
     .consult h4 {
-        font-size: 1rem; /* 16px */
+        font-size: 1rem; 
         text-align: center;
     }
 
@@ -297,7 +313,7 @@
     }
 }
 
-/* Process div styling */
+
 .processdiv {
     display: flex;
     flex-direction: column;
@@ -406,7 +422,7 @@
     }
 
     .fileicon {
-        font-size: 50px; /* Reduce icon size for smaller screens */
+        font-size: 50px; 
     }
 }
 
@@ -721,3 +737,6 @@
         height: 130px;
     }
 }
+
+
+  

@@ -23,6 +23,7 @@
 
 .icon {
     height: 22px;
+    /* color: blue; */
 }
 
 .text {
@@ -32,13 +33,21 @@
 .right {
     display: flex;
     gap: 20px;
+    color:red;
+    z-index:20;
+    opacity:1;
 }
-
-.social-icon {
+.topbar-social-icon {
     height: 25px;
     width: auto;
+    color: var(--primarycoral);
 }
-
+.topbar-social-icon:hover{
+    color: var(--accentwine);
+}
+.topbar-icon{
+    color: var(--accentwine);
+}
 @media (max-width: 768px) {
     .topbar {
         flex-direction: column;

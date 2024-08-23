@@ -1,240 +1,113 @@
-.tab-content > div {
+.about-tab-content > div {
     display: none;
 }
 
-.tab-content > div.active {
+.about-tab-content > div.active {
     display: block;
 }
-.who-we-are{
-    margin:100px 0;
+.about-tab-content{
+    padding:20px 0;
+    margin:0 20px;
 }
-.tab-content p,
-.missiondiv p,
-.visiondiv p {
-    color: var(--primarycoral);
-    opacity: 0.7;
+.about-tab-content h1{
+    color: var(--accentcordovan);
     font-family: 'Poppins';
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 32px;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 1.6;
     letter-spacing: 0.1%;
+    text-align: left; /* Ensures headings are centered */
+    margin: 20px 0; /* Space between heading and paragraph */
+}
+.about-tab-content h2{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.6;
+    letter-spacing: 0.1%;
+    margin: 5px 0; /* Space between heading and paragraph */
+    color:var(--primarycoral);
+    opacity: 0.9;
+}    
+
+.about-tab-content p, .about-tab-content ul{
+    color: var(--primarycoral);
+    font-family: 'Poppins';
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.1%;
+    margin: 5px 0;
+}
+.about-tab-content p{
+    opacity: 0.7;
+    font-size: 18px;
+    padding:10px 0;
+}
+.about-tab-content ul{
+    list-style: none;
+    padding:0;
+    margin: 0;
+    font-size: 18px;
+    opacity: 0.7;
+}
+.about-tab-content li{
+    padding:10px 0;
+}
+
+.about-tab-content h3{
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.6;
+    letter-spacing: 0.1%;
+    margin: 20px 0; /* Space between heading and paragraph */
+    color:var(--primarycoral);
+    opacity: 0.9;
+}
+
+.about-tab-content h4{
+    font-size: 18px;
+    color: var(--primarycoral);
+    font-family: 'Poppins';
+    font-weight: 400;
+    line-height: 1.6;
+    letter-spacing: 0.1%;
+    margin: 5px 0;
+
+}
+.who-we-are h4{
+    padding:15px 0;
 }
 
 .missionvision {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    
+    justify-content: center;   
 }
 
-.missiondiv,
-.visiondiv {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: 50px;
-    flex-wrap: wrap; /* Ensures content wraps on smaller screens */
-    gap: 20px; 
-
-}
-
-.missiondiv img,
-.visiondiv img {
-    height: 300px;
-    object-fit: cover; /* Ensures image fits within the given height */
-    border-radius: 5px; /* Optional: adds rounded corners to images */
+.mission img,
+.vision img {
+    width:130px;
+    /* width:auto; */
+    /* border-radius: 5px;  */
 }
 
 .mission,
 .vision {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    max-width: 800px; 
+    justify-content: space-around;
+    align-items: center;
+    gap:20px;
+    
 }
 
-.missiondiv h1,
-.visiondiv h1 {
-    color: var(--accentcordovan);
-    font-family: 'Poppins';
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 1.5;
-    letter-spacing: 0.1%;
-    text-align: center; /* Ensures headings are centered */
-    margin-bottom: 20px; /* Space between heading and paragraph */
-}
-
-/* Breakpoints for responsiveness */
-
-/* Large screens (desktops) */
-/* Medium screens (tablets) */
-@media (max-width: 1200px) {
-    .aboutus-tabs {
-        margin: 0 5px;
-    }
-
-    .tab-link {
-        font-size: 17px;
-        padding: 14px 28px;
-    }
-
-    .who-we-are p {
-        margin: 0 10px;
-    }
-
-    .missiondiv,
-    .visiondiv {
-        justify-content: center;
-        align-items: center;
-        margin: 0 -10px;
-    }
-
-    .missiondiv img,
-    .visiondiv img {
-        max-width: 500px;
-        height: auto;
-    }
-}
-
-/* Medium screens (tablets) */
-@media (max-width: 992px) {
-    .aboutus-tabs {
-        margin: 0;
-        gap: 1px;
-    }
-
-    .tab-content p {
-        margin: 0 20px;
-        margin-bottom: -10px;
-    }
-
-    .tab-link {
-        font-size: 16px;
-        padding: 12px 24px;
-    }
-
-    .missiondiv {
-        flex-direction: column; /* Stack content vertically */
-        gap: 5px;
-    }
-
-    .visiondiv {
-        flex-direction: column-reverse;
-    }
-
-    .missiondiv img,
-    .visiondiv img {
-        max-width: 200px;
-    }
-
-    .mission,
-    .vision {
-        width: 100%;
-    }
-
-    .tab-link.active::after {
-        left: 30px;
-        right: 30px;
-    }
-}
-
-/* Small screens (mobile devices) */
-@media (max-width: 768px) {
-    .aboutus-tabs {
-        justify-content: center;
-        margin: 0;
-        gap: 1px;
-    }
-
-    .tab-link {
-        font-size: 15px;
-        padding: 10px 20px;
-        flex: 1 0 auto; /* Allow tabs to shrink and wrap */
-    }
-
-    .tab-content p {
-        margin: 0 20px;
-        margin-bottom: -10px;
-    }
-
-    .visiondiv {
-        flex-direction: column-reverse;
-    }
-
-    .missiondiv img,
-    .visiondiv img,
-    .mission,
-    .vision {
-        margin: 0 25px;
-    }
-
-    .missiondiv h1,
-    .visiondiv h1 {
-        font-size: 20px;
-        line-height: 1.4;
-    }
-
-    .tab-link.active::after {
-        left: 30px;
-        right: 80px;
-    }
-}
-
-/* Extra small screens (very small mobile devices) */
-@media (max-width: 576px) {
-    .aboutus-tabs {
-        justify-content: center;
-        margin: 0;
-        gap: 1px;
-    }
-
-    .tab-link {
-        font-size: 14px;
-        padding: 8px 16px;
-        flex: 1 0 auto; /* Allow tabs to shrink and wrap */
-    }
-
-    .tab-link.active::after {
-        left: 35px;
-        right: 35px;
-    }
-
-    .visiondiv {
-        flex-direction: column-reverse;
-    }
-
-    .missiondiv h1,
-    .visiondiv h1 {
-        font-size: 18px;
-    }
-
-    .tab-content p,
-    .missiondiv p,
-    .visiondiv p {
-        font-size: 16px;
-        line-height: 28px;
-    }
-
-    .tab-content p {
-        margin: 0 20px;
-        margin-bottom: -10px;
-    }
-}
 /* director tab styling */
 .directors{
     display: flex;
     padding:0;
-    margin:100px 0;
+    /* margin:100px 0; */
 }
-.directorP{
-    /* text-align: center; */
-    margin-bottom: 25px; 
-}
-.directors p{
-    font-weight: 800;
-    color:var(--accentcordovan);
+
+.director-info p,.director-info h4, .director-info h3,.director-info h2,.director-info h1{
+    color:var(--primarycream);
     /* font-size: 20px; */
 }
 .director-info{
@@ -300,78 +173,174 @@
     justify-content: center;
     align-items: center;
 }
-/* Large screens (desktops) */
+.about-machine-slider{
+    box-shadow: 5px 5px 20px -5px grey;
+    padding-left:20px;
+    margin: 30px 0 60px 0;
+}
+
+/* Large screens (desktops, 1200px and up) */
 @media (max-width: 1200px) {
-    .director-info p{
-        margin-left: -1px;
+    .about-tab-content {
+      margin: 0 10px;
     }
-}
-
-/* Equipment Styling */
-.equipment {
-    display: flex;
-    margin: 0;
-    margin:100px 0;
-}
-
-.equipment h1 {
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 32px;
-    letter-spacing: 0.15px;
-    margin: 25px 0;
-    padding: 0;
-}
-
-.equipment h5 {
-    font-weight: 400;
-    font-size: 18px;
-    color:var(--secondaryblack);
-    opacity: 0.7;
-}
-
-.equipment p {
-    color: var(--primarycoral);
-    opacity: 0.7;
-    font-family: 'Poppins';
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 32px;
-    letter-spacing: 0.1%;
-   
-}
-
-.equipment ul {
-    list-style: none;
-    color: var(--primarycoral);
-    opacity: 0.7;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 32px;
-    letter-spacing: 0.1%;
-    /* margin-top: -30px; */
-}
-
-/* history */
-.history{
-    margin:100px 0;
-}
-.history h1 {
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 32px;
-    letter-spacing: 0.15px;
-    margin: 25px 0;
-    padding: 0;
-}
-
-.history ul{
-    color: var(--primarycoral);
-    /* padding-bottom: 40px; */
-    opacity: 0.7;
-    font-family: 'Poppins';
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 32px;
-    letter-spacing: 0.1%;
-}
+    .about-tab-content{
+        padding:0 20px;
+    }
+  
+    .about-tab-content h1 {
+      font-size: 28px;
+    }
+  
+    .about-tab-content h2 {
+      font-size: 16px;
+    }
+  
+    .about-tab-content p {
+      font-size: 16px;
+    }
+  
+    .about-tab-content h3 {
+      font-size: 22px;
+    }
+  
+    .about-tab-content h4 {
+      font-size: 16px;
+    }
+  
+    .director-info {
+      gap: 15px;
+    }
+  
+    .director-info h1 {
+      font-size: 22px;
+    }
+  
+    .director-info h2 {
+      font-size: 16px;
+    }
+  
+    .director-info p {
+      font-size: 14px;
+    }
+  }
+  
+  /* Medium screens (tablets, 992px and up) */
+  @media (max-width: 992px) {
+    .about-tab-content{
+        padding:0 20px;
+    }
+  
+    .mission,
+    .vision {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .director-info {
+      flex-direction: column;
+    }
+  
+    .about-tab-content h1 {
+      font-size: 24px;
+      text-align: left;
+    }
+  
+    .about-tab-content h2 {
+      font-size: 15px;
+    }
+  
+    .about-tab-content h3 {
+      font-size: 20px;
+    }
+  
+    .about-tab-content h4 {
+      font-size: 15px;
+    }
+  
+    .about-tab-content p {
+      font-size: 14px;
+    }
+  
+    .about-tab-content ul {
+      font-size: 14px;
+    }
+  
+    .mission img,
+    .vision img {
+      width: 100px;
+    }
+  }
+  
+  /* Small screens (landscape phones, 768px and up) */
+  @media (max-width: 768px) {
+    .about-tab-content {
+      padding: 10px 20px;
+      margin: 0;
+    }
+  
+    .about-tab-content h1 {
+      font-size: 22px;
+    }
+  
+    .about-tab-content h2,
+    .about-tab-content h4 {
+      font-size: 14px;
+    }
+  
+    .about-tab-content h3 {
+      font-size: 18px;
+    }
+  
+    .about-tab-content p {
+      font-size: 13px;
+    }
+  
+    .about-tab-content ul {
+      font-size: 13px;
+    }
+  
+    .mission img,
+    .vision img {
+      width: 80px;
+    }
+  }
+  
+  /* Extra small screens (portrait phones, less than 576px) */
+  @media (max-width: 576px) {
+    .about-tab-content {
+      padding: 10px 20px;
+      margin: 0;
+    }
+  
+    .about-tab-content h1 {
+      font-size: 20px;
+    }
+  
+    .about-tab-content h2,
+    .about-tab-content h4 {
+      font-size: 13px;
+    }
+  
+    .about-tab-content h3 {
+      font-size: 16px;
+    }
+  
+    .about-tab-content p,
+    .about-tab-content ul {
+      font-size: 12px;
+    }
+    .mission,.vision{
+        align-items:flex-start;
+        justify-content:flex-start ;
+    }
+  
+    .mission img,
+    .vision img {
+      width: 70px;
+    }
+  
+    .info-left {
+      width: 100%;
+    }
+  }

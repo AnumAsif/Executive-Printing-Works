@@ -95,18 +95,19 @@
     line-height: 25px;
 }
 
-.contact-form .form-group {
+.contact-form .contact-form-group {
     display: flex;
     /* gap: 20px; */
     /* margin-bottom: 20px; */
 }
-.form-group{
+.contact-form-group{
     flex-direction: row;
     /* margin-right: -22px; */
-    /* gap:50px; */
+    gap:10px;
 }
-.form-group input{
+.contact-form-group input{
     width:50%;
+    /* gap:5px; */
 }
 
 .contact-form input,
@@ -120,6 +121,7 @@
 }
 .contact-form textarea{
     font-family: 'Poppins';
+    height:100px;
 }
 
 .contact-form button {

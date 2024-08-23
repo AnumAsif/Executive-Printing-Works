@@ -1,6 +1,7 @@
 import './App.css';
 import Topbar from './Components/Topbar/Topbar';
 import Navbar from './Components/Navbar/Navbar';
+import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
 import {BrowserRouter,Routes, Route} from 'react-router-dom';
 import Home from './Pages/Home';
 import Product from './Pages/Product';
@@ -9,13 +10,14 @@ import Services from './Pages/Services';
 import Cart from './Pages/Cart';
 import LoginSignup from './Pages/LoginSignup';
 import Contact from './Pages/Contact';
-import DetailedServicePage from './Pages/DetailedServicePage';
+import DetailedServices from './Pages/DetailedServices';
 import Footer from './Components/Footer/Footer';
 
 function App() {
   return (
     <div className="app">
       <BrowserRouter>
+        <ScrollToTop />
         <Topbar/>
         <Navbar/>
         <Routes>
@@ -26,10 +28,11 @@ function App() {
           <Route path='/cart' element={<Cart/>} />
           <Route path='/login' element={<LoginSignup/>} />
           <Route path='/about' element={<About/>} />
-          <Route path='/services' element={<Services/>}>
-          </Route>   
-          <Route path='/detailedServicePage' element={<DetailedServicePage />}/>
-          <Route path='/contact' element={<Contact/>} />
+          <Route path='/services' element={<Services/>}/>
+          <Route path='/detailedservices' element={<DetailedServices/>}/>   
+           <Route path='/contact' element={<Contact/>}>
+            {/* <Route path=':get-a-quote' element={<Contact/>}/> */}
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -1,5 +1,6 @@
 /* Styles for the .quotation-form container */
 .quotation-form-container {
+    display: block;
     max-width: 800px;
     margin: 40px auto;
     padding: 60px;
