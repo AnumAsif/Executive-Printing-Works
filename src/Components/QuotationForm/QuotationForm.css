@@ -88,6 +88,10 @@ select{
     background-color: white;
    
 }
+.custom-size-inputs{
+    display:flex;
+    gap:20px
+}
 #finishing{
     height:200px;
 }
@@ -243,8 +247,93 @@ input[type="file"] {
 }
 .sample-need-yes,.sample-need-no{
     display:flex;
-    gap:10px;
+    gap:20px;
     justify-content: center;
     align-items: center;
 }
 
+/*Responsive styles for different screen sizes */
+@media (max-width: 1200px) {
+    .quotation-form-container {
+        padding: 40px;
+        max-width: 90%;
+    }
+
+    .quotation-form-container h1 {
+        font-size: 24px;
+    }
+
+    .quotation-form h3 {
+        font-size: 20px;
+    }
+}
+/* @media (max-width:1024px) and (max-height:600px){
+    .quotation-form-container h1 {
+        font-size: 16px;
+    }
+
+    .quotation-form h3 {
+        font-size: 16px;
+    }
+} */
+@media (max-width: 768px) {
+    .quotation-form-container {
+        padding: 30px;
+        max-width: 100%;
+    }
+
+    .quotation-form-container h1 {
+        font-size: 18px;
+    }
+
+    .quotation-form h3 {
+        font-size: 16px;
+    }
+
+    .customer-info-1,
+    .customer-info-2,
+    .designneed,
+    .page-cover,
+    .sample-need {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .file-upload {
+        padding: 20px;
+    }
+
+    .upload-btn {
+        padding: 12px 24px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .quotation-form-container {
+        padding: 20px;
+    }
+
+    .quotation-form-container h1 {
+        font-size: 20px;
+    }
+
+    .quotation-form h3 {
+        font-size: 16px;
+    }
+
+    .file-upload {
+        padding: 15px;
+    }
+
+    .upload-btn,
+    .quote-submit-button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .quotation-form p,
+    .status-message {
+        font-size: 14px;
+    }
+}

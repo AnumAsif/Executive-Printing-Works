@@ -30,7 +30,7 @@ function Navbar(){
           <li><Link to="/Executive-Printing-Works/" onClick={() => handleNavigate('/')}>Home</Link></li>
           <li><Link to="/about" onClick={() => handleNavigate('/about')}>About</Link></li>
           <li><Link to="/detailedservices" onClick={() => handleNavigate('/detailedservices')}>Services</Link></li>
-          <li><Link to="/product" onClick={() => handleNavigate('/product')}>Product</Link></li>
+          <li><Link to="/gallery" onClick={() => handleNavigate('/gallery')}>Gallery</Link></li>
           <li><Link to="/contact" onClick={() => handleNavigate('/contact')}>Contact</Link></li>
         </ul>
       </div>

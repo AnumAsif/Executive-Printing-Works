@@ -7,6 +7,9 @@ import Tabs from '../Components/Tabs/Tabs';
 import FeedbackForm from '../Components/FeedbackForm/FeedbackForm';
 import ContactForm from '../Components/ContactForm/ContactForm';
 import QuotationForm from '../Components/QuotationForm/QuotationForm';
+// import QuoteForm from '../Components/QuoteForm/QuoteForm';
+import QuoteForm from '../Components/QuoteForm/QuoteForm';
+
 
 export default function Contact() {
     const [activeTab, setActiveTab] = useState('quotation-form');
@@ -37,7 +40,8 @@ export default function Contact() {
     const tabs = [
         { id: 'quotation-form', label: 'Get a Quote' },
         { id: 'feedback', label: 'Feedback' },
-        { id: 'contact-us', label: 'Contact Us' }
+        { id: 'contact-us', label: 'Contact Us' },
+        { id:'quote-form', label: 'Quote Test'}
     ];
 
     return (
@@ -53,6 +57,9 @@ export default function Contact() {
                 </div>
                 <div className={`contact-us ${activeTab === 'contact-us' ? 'active' : ''}`}>
                     <ContactForm />
+                </div>
+                <div className={`quote-form ${activeTab === 'quote-form' ? 'active' : ''}`}>
+                    <QuoteForm />
                 </div>
             </div>
         </div>

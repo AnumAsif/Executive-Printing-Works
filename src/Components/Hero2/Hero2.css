@@ -27,11 +27,43 @@
     font-size: 64px;
     padding-left: 13.5%;
     margin-bottom: 10px;
-   
 }
-@media (max-width: 428px){
-    .hero2 h1{
-        font-size:32px;
-        margin-bottom:25px;
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (max-width: 768px) {
+    .hero2-container {
+      height: 40vh; /* Reduce height for medium screens */
     }
-}
+    .hero2{
+        height:40vh;
+    }
+    .hero2-container h1 {
+      font-size: 48px; /* Decrease font size for better readability */
+      padding-left: 10%;
+    }
+  }
+  
+  /* Small devices (landscape phones, 576px and up) */
+  @media screen and (max-width: 576px) {
+    .hero2-container {
+      height: 30vh; /* Further reduce height for smaller screens */
+    }
+    .hero2{
+        height:30vh
+    }
+    .hero2-container h1 {
+      font-size: 36px; /* Further decrease font size */
+      padding-left: 8%;
+    }
+  }
+  
+  /* Extra small devices (phones, less than 576px) */
+  @media screen and (max-width: 400px) {
+    .hero2-container, .hero2 {
+      height: 25vh; /* Minimal height for very small screens */
+    }
+    .hero2-container h1 {
+      font-size: 28px; /* Even smaller font size */
+      padding-left: 5%;
+    }
+  }

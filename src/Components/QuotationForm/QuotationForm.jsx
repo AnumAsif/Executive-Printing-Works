@@ -8,45 +8,52 @@ import Multiselect from 'multiselect-react-dropdown';
 
 
 const QuotationForm = () => {
+    const [selectedFile, setSelectedFile] = useState(null);
+    const [uploadMessage, setUploadMessage] = useState("");
     const [formData, setFormData] = useState({
         customer_name: '',
         customer_email: '',
         customer_phone: '',
         customer_company: '',
-        contact_method: 'email',
-        project_type: 'business_cards',
-        print_type: 'offset',
-        quantity: '',
-        page_count: '',
+        contact_method: '',
+        project_type: '',
+        custom_project_type:'',
+        print_type: '',
+        quantity: null,
+        page_count: null,
         size: '',
-        paper_type: 'glossy',
-        cover_paper_type:'glossy',
-        page_grammage: '', // New field
-        cover_grammage: '', // New field
-        color_options: 'full_color',
+        custom_length:null,
+        custom_width:null,
+        paper_type: '',
+        cover_paper_type:'',
+        page_grammage: null, // New field
+        cover_grammage: null, // New field
+        color_options: '',
+        cover_color_options:'',
         finishing: [],
         design_needed: 'no',
         design_upload: null,
         design_instructions: '',
         delivery_method: 'pickup',
         shipping_address: '',
-        completion_date: '',
+        completion_date: null,
         urgency: 'standard',
+        sample_needed: 'no',
         notes: '',
         budget: ''
     });
-
+   
     const [errors, setErrors] = useState({});
     const [submissionStatus, setSubmissionStatus] = useState('');
 
     const handleChange = (e) => {
         const { name, value, type } = e.target;
-
         if (type === 'file') {
             setFormData({
                 ...formData,
-                [name]: e.target.files[0]
+                [name]: e.target.files[0] || null
             });
+            setUploadMessage(`File selected: ${e.target.files[0].name}`);
         } else {
             setFormData({
                 ...formData,
@@ -54,14 +61,36 @@ const QuotationForm = () => {
             });
         }
     };
-
-    const handleFinishingChange = (selectedList) => {
+    // Handle file removal
+    const handleFileRemove = () => {
         setFormData({
-          ...formData,
-          finishing: selectedList.map(item => item.value) // Extracting the 'value' from selected items
-        });
-      };
-    
+            ...formData,
+            design_upload: null
+        })
+        setUploadMessage("No file selected.");
+         // Update message
+    };
+
+    // const handleFinishingChange = (selectedList) => {
+    //     setFormData({
+    //       ...formData,
+    //       finishing: selectedList.map(item => item.value) // Extracting the 'value' from selected items
+    //     });
+    //   };
+    const handleSelect = (selectedList, selectedItem) => {
+        setFormData((prevState) => ({
+        ...prevState,
+        finishing: selectedList.map((item) => item.value),
+        }));
+    };
+
+    // Function to handle removal
+    const handleRemove = (selectedList, removedItem) => {
+        setFormData((prevState) => ({
+        ...prevState,
+        finishing: selectedList.map((item) => item.value),
+        }));
+    }; 
     const finishingOptions = [
         { name: 'Lamination', value: 'lamination' },
         { name: 'Embossing', value: 'embossing' },
@@ -90,26 +119,11 @@ const QuotationForm = () => {
 
     const sanitizeFormData = () => {
         const sanitizedData = { ...formData };
-        sanitizedData.customer_name = DOMPurify.sanitize(formData.customer_name);
-        sanitizedData.customer_email = DOMPurify.sanitize(formData.customer_email);
-        sanitizedData.customer_phone = DOMPurify.sanitize(formData.customer_phone);
-        sanitizedData.customer_company = DOMPurify.sanitize(formData.customer_company);
-        sanitizedData.contact_method = DOMPurify.sanitize(formData.contact_method);
-        sanitizedData.project_type = DOMPurify.sanitize(formData.project_type);
-        sanitizedData.print_type = DOMPurify.sanitize(formData.print_type);
-        sanitizedData.size = DOMPurify.sanitize(formData.size);
-        sanitizedData.page_grammage = DOMPurify.sanitize(formData.page_grammage); // New field
-        sanitizedData.cover_grammage = DOMPurify.sanitize(formData.cover_grammage); // New field
-        sanitizedData.paper_type = DOMPurify.sanitize(formData.paper_type);
-        sanitizedData.cover_paper_type = DOMPurify.sanitize(formData.cover_paper_type);
-        sanitizedData.color_options = DOMPurify.sanitize(formData.color_options);
-        sanitizedData.design_instructions = DOMPurify.sanitize(formData.design_instructions);
-        sanitizedData.delivery_method = DOMPurify.sanitize(formData.delivery_method);
-        sanitizedData.shipping_address = DOMPurify.sanitize(formData.shipping_address);
-        sanitizedData.completion_date = DOMPurify.sanitize(formData.completion_date);
-        sanitizedData.urgency = DOMPurify.sanitize(formData.urgency);
-        sanitizedData.notes = DOMPurify.sanitize(formData.notes);
-        sanitizedData.budget = DOMPurify.sanitize(formData.budget);
+        Object.keys(sanitizedData).forEach((key) => {
+            if (typeof sanitizedData[key] === 'string') {
+                sanitizedData[key] = DOMPurify.sanitize(sanitizedData[key]);
+            }
+        });
         return sanitizedData;
     };
     const handleSubmit = async (e) => {
@@ -128,23 +142,41 @@ const QuotationForm = () => {
                 formDataToSend.append(key, sanitizedData[key]);
             }
         }
-        if (formData.design_upload) {
-            formDataToSend.append('design_upload', formData.design_upload);
-        }
+        // formDataToSend.append('design_upload', fileInput.files[0]);
+        // console.log("attached file is:"+fileInput.files[0]);
+        // for (const key in formData){
+        //     if (formData[key]!= null){
+        //         formDataToSend.append(key, formData[key])
+        //     }
+        // }
 
+        // if (formData.design_upload) {
+        //     formDataToSend.append('design_upload', formData.design_upload);
+        // }
+        
         try {
-            const response = await axios.post('http://localhost:4000/submit-quotation', formDataToSend, {
+            await axios.post('http://localhost:4000/api/quotes/submit-quotation', formDataToSend, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-
             setSubmissionStatus('Quotation submitted successfully!');
+
         } catch (error) {
-            console.error('Error submitting form:', error);
+            console.error('Error submitting form:', error.message);
+            if (error.response) {
+                console.error('Response data:', error.response.data);
+                // console.error('Response status:', error.response.status);
+                // console.error('Response headers:', error.response.headers);
+            } else if (error.request) {
+                console.error('Request error:', error.request);
+            } else {
+                console.error('General error:', error.message);
+            }
             setSubmissionStatus('Error submitting form');
         }
     };
+    
 
     return (
         <div className="quotation-form-container" id='quotation-form-container'>
@@ -171,8 +203,9 @@ const QuotationForm = () => {
                             <input type="text" id="company" name="customer_company"   placeholder="Company Name" value={formData.customer_company} onChange={handleChange} />
                         </div>
                         <div className="customer-info-3">
-                            <label htmlFor="contact_method">Preferred Contact Method:</label>
+                            {/* <label htmlFor="contact_method">Preferred Contact Method:</label> */}
                             <select id="contact_method" name="contact_method" value={formData.contact_method} onChange={handleChange}>
+                                <option value ="">Preferred Contact Method</option>
                                 <option value="email">Email</option>
                                 <option value="phone">Phone</option>
                             </select>
@@ -184,8 +217,9 @@ const QuotationForm = () => {
                 {/* Project Details */}
                 <section className="project-details">
                     <h3>Project Details</h3>
-                    <label htmlFor="project_type">Project Type:</label>
+                    {/* <label htmlFor="project_type">Project Type:</label> */}
                     <select id="project_type" name="project_type" value={formData.project_type} onChange={handleChange} required>
+                        <option value="" disabled>Select Project Type</option>
                         <option value="business_cards">Business Cards</option>
                         <option value="brochures">Brochures</option>
                         <option value="notebooks">Notebooks</option>
@@ -196,9 +230,23 @@ const QuotationForm = () => {
                         <option value="stickers">Stickers</option>
                         <option value="other">Other</option>
                     </select>
-
-                    <label htmlFor="print_type">Print Type:</label>
+                    {formData.project_type === "other" && (
+                    <div className="form-group custom-project">
+                        {/* <label htmlFor="customLength">Custom Length (in cm)</label> */}
+                        <input
+                        type="string"
+                        id="custom_project_type"
+                        name="custom_project_type"
+                        value={formData.custom_project_type}
+                        onChange={handleChange}
+                        placeholder="Enter Project Type"
+                        required
+                        />
+                     </div>   
+                    )}
+                    {/* <label htmlFor="print_type">Print Type:</label> */}
                     <select id="print_type" name="print_type" value={formData.print_type} onChange={handleChange} required>
+                        <option value="" disabled>Select Print Type</option>
                         <option value="offset">Offset Printing</option>
                         <option value="digital">Digital Printing</option>
                         <option value="unsure">Unsure</option>
@@ -212,21 +260,67 @@ const QuotationForm = () => {
                     <input type="number" id="page_count" name="page_count"  placeholder="Page Count (for multipage items including cover)"value={formData.page_count} onChange={handleChange} />
 
                     {/* <label htmlFor="size">Size/Dimensions:</label> */}
-                    <input type="text" id="size" name="size" placeholder="Size/Dimensions (e.g., A4, 8.5x11 inches, W 310mm x H 280mm)" value={formData.size} onChange={handleChange} required />
+                    {/* <input type="text" id="size" name="size" placeholder="Size/Dimensions (e.g., A4, 8.5x11 inches, W 310mm x H 280mm)" value={formData.size} onChange={handleChange} required /> */}
+                    {/* {errors.size && <p>{errors.size}</p>} */}
+                    <select
+                        id="size"
+                        name="size"
+                        value={formData.size}
+                        onChange={handleChange}
+                        required
+                    >
+                        <option value="" disabled>
+                        Select size
+                        </option>
+                        <option value="A4">A4</option>
+                        <option value="A3">A3</option>
+                        <option value="A2">A2</option>
+                        <option value="A5">A5</option>
+                        <option value="custom">Custom Size</option>
+                    </select>
                     {errors.size && <p>{errors.size}</p>}
+                    {/* Conditionally render custom size input fields */}
+                    {formData.size === "custom" && (
+                    <div className="form-group custom-size-inputs">
+                        {/* <label htmlFor="customLength">Custom Length (in cm)</label> */}
+                        <input
+                        type="number"
+                        id="custom_length"
+                        name="custom_length"
+                        value={formData.custom_length}
+                        onChange={handleChange}
+                        placeholder="Enter custom length (in cm)"
+                        required
+                        />
+
+                        {/* <label htmlFor="customWidth">Custom Width (in cm)</label> */}
+                        <input
+                        type="number"
+                        id="custom_width"
+                        name="custom_width"
+                        value={formData.custom_width}
+                        onChange={handleChange}
+                        placeholder="Enter custom width (in cm)"
+                        required
+                        />
+                    </div>
+                    )}
                     <div className="page-cover">
                         <div className="pages">
-                            <label htmlFor="paper_type">Paper Type:</label>
+                            <h4>Paper Details</h4>
+                            {/* <label htmlFor="paper_type">Paper Type:</label> */}
                             <select id="paper_type" name="paper_type" value={formData.paper_type} onChange={handleChange} required>
+                                <option value="">Select Paper Type</option>
                                 <option value="gloss">Gloss</option>
                                 <option value="matte">Matte</option>
                                 <option value="uncoated">Uncoated</option>
                                 <option value="textured">Textured</option>
                                 <option value="others">Others</option>
                             </select>
-                            <input type="number" id="page_grammage" name="page_grammage"  placeholder="Paper Grammage"value={formData.paper_grammage} onChange={handleChange} />
-                            <label htmlFor="color_options">Color Options:</label>
+                            <input type="number" id="page_grammage" name="page_grammage"  placeholder="Paper Grammage" value={formData.paper_grammage} onChange={handleChange} />
+                            {/* <label htmlFor="color_options">Color Options:</label> */}
                             <select id="color_options" name="color_options" value={formData.color_options} onChange={handleChange} required>
+                                <option value="">Select Color Options</option>
                                 <option value="full_color">Full Color</option>
                                 <option value="six_color">6 color</option>
                                 <option value="five_color">5 Color</option>
@@ -237,8 +331,10 @@ const QuotationForm = () => {
                             </select>
                         </div>
                         <div className="cover">
-                            <label htmlFor="cover_paper_type">Paper Type (Cover):</label>
+                            <h4>Cover Details</h4>
+                            {/* <label htmlFor="cover_paper_type">Paper Type (Cover):</label> */}
                             <select id="cover_paper_type" name="cover_paper_type" value={formData.cover_paper_type} onChange={handleChange} required>
+                                <option value="" selected>Select cover paper type</option>
                                 <option value="gloss">Gloss</option>
                                 <option value="matte">Matte</option>
                                 <option value="uncoated">Uncoated</option>
@@ -246,8 +342,9 @@ const QuotationForm = () => {
                                 <option value="others">Others</option>
                             </select>
                             <input type="number" id="cover_grammage" name="cover_grammage"  placeholder="Paper Grammage (Cover)" value={formData.cover_grammage} onChange={handleChange} />
-                            <label htmlFor="color_options">Color Options (Cover):</label>
+                            {/* <label htmlFor="color_options">Color Options (Cover):</label> */}
                             <select id="cover_color_options" name="cover_color_options" value={formData.cover_color_options} onChange={handleChange} required>
+                                <option value="">Select Color Options for Cover</option>
                                 <option value="full_color">Full Color</option>
                                 <option value="six_color">6 color</option>
                                 <option value="five_color">5 Color</option>
@@ -259,15 +356,21 @@ const QuotationForm = () => {
                         </div>
                     </div>
                     {/* <p>50 - 400 multiples of 10</p> */}
-                    <label htmlFor="finishing">Finishing Options:</label>
+                    {/* <label htmlFor="finishing">Finishing Options:</label> */}
                     <Multiselect
                         options={finishingOptions} // Options for dropdown
-                        selectedValues={formData.finishing.map(f => finishingOptions.find(o => o.value === f))} // Pre-selected values
-                        onSelect={handleFinishingChange} // Function to handle the selection
-                        onRemove={handleFinishingChange} // Function to handle removal of selected items
+                        selectedValues={finishingOptions.filter(option =>
+                                        formData.finishing.includes(option.value)
+                                        )} // Pre-selected values based on the formData.finishing state
+                        onSelect={handleSelect} // Function to handle selection
+                        onRemove={handleRemove}  // Function to handle removal of selected items
                         displayValue="name" // Property to display in dropdown
-                        placeholder="Select finishing options"
-                        showCheckbox={true} // Optional: Show checkboxes
+                        placeholder="Select Finishing Options"
+                        style={{
+                                multiselectContainer: { width: "100%" },
+                                optionContainer: { maxHeight: "180px" }, // Allows for scrolling
+                        }}
+                        // showCheckbox={true} // Optional: Show checkboxes
                     />
                 </section>
 
@@ -276,9 +379,17 @@ const QuotationForm = () => {
                     <h3>Design Details</h3>
                     <div className="file-upload">
                         <FontAwesomeIcon className='upload-icon' icon={faFileUpload} />
-                        <label htmlFor="design_upload">Upload Your Design</label>
-                        <input type="file" id="design_upload" name="design_upload" onChange={handleChange}  />
+                        <label>Upload Your Design</label>
+                        <input type="file" id = 'design_upload' name='design_upload' onChange={handleChange}  />
                     </div>
+                    {formData.design_upload && (
+                            <div className="file-info">
+                                <p>{uploadMessage}</p>
+                                <button type="button" onClick={handleFileRemove}>
+                                    Remove File
+                                </button>
+                            </div>
+                    )}
                     <label style={{fontWeight:"bold"}}>Artwork Adjustment Required?</label>
                     <div className="designneed">
                         <div className="designneed-yes">
@@ -306,10 +417,10 @@ const QuotationForm = () => {
                         <option value="local_delivery">Local Delivery (Additional Charges Apply)</option>
                         <option value="shipping">Shipping(Additional Charges Apply)</option>
                     </select>
-
                     {/* <label htmlFor="shipping_address">Shipping Address:</label> */}
-                    <textarea id="shipping_address" name="shipping_address"  placeholder="Shipping Address" value={formData.shipping_address} onChange={handleChange}></textarea>
-
+                    {formData.delivery_method !== 'pickup' && (
+                        <textarea id="shipping_address" name="shipping_address"  placeholder="Shipping Address" value={formData.shipping_address} onChange={handleChange}></textarea>
+                    )}    
                     <label htmlFor="completion_date">Preferred Completion Date:</label>
                     <input type="date" id="completion_date" name="completion_date" value={formData.completion_date} onChange={handleChange} />
 
@@ -356,6 +467,7 @@ const QuotationForm = () => {
                 </section>
 
                 <button type="submit" className="quote-submit-button">Request Quote</button>
+                <br />
                 {submissionStatus && <p>{submissionStatus}</p>}
             </form>
         </div>
