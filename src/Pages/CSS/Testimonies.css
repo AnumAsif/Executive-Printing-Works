@@ -3,6 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 .testimoniesdiv h1{
     color:var(--primarycoral);
@@ -92,8 +93,8 @@
     }
 
     .testimonialcards {
-        gap: 15px;
-        width:530px;
+        gap: 5px;
+        width:80vw;
         height:auto;
     }
 
@@ -124,7 +125,9 @@
     }
 
     .testimonycard {
+        /* width:80vw; */
         padding: 10px;
+        margin:0;
     }
 
     .testimonycard img {
