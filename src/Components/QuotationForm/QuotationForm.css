@@ -248,8 +248,8 @@ input[type="file"] {
 .sample-need-yes,.sample-need-no{
     display:flex;
     gap:20px;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: center; */
 }
 
 /*Responsive styles for different screen sizes */
@@ -295,7 +295,7 @@ input[type="file"] {
     .designneed,
     .page-cover,
     .sample-need {
-        flex-direction: column;
+        /* flex-direction: column; */
         gap: 20px;
     }
 

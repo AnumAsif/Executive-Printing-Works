@@ -484,11 +484,16 @@
     text-align: center;
     border-radius: 5px;
     box-shadow: 5px 5px 20px -5px grey; 
-   /* margin-bottom: 5px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:35px;
+    box-sizing: border-box;
+    /* margin-bottom: 5px; */
 }
 .overlapdiv p{
-    margin-top: 11px;
-    padding:25px;
+    /* margin-top: 11px; */
+    /* padding:25px; */
 }
 
 .moreaboutdiv h4 {
@@ -618,10 +623,7 @@
         align-items: center;
     }
     .overlapdiv p {
-        margin:0;
-        /* padding:0; */
-        /* padding:10px; */
-        /* padding: 25px; Adjust padding */
+        padding: 25px;
     }
 }
 
@@ -656,6 +658,7 @@
         align-self: center;
         /* padding:8px 10px; Adjust padding */
         font-size: 18px;
+        line-height:1.5;
     }
     .moreabout-right button {
         font-size: 16px; /* Reduce button font size */
@@ -765,4 +768,26 @@
 }
 
 
-  
+@media screen and (orientation: landscape) {
+    .consult-container,.consult {
+      height: 100vh;
+    }
+    .aboutus1{
+        margin:0;
+        padding:0;
+        margin-top:150px;
+    }
+    .aboutus1-right img{
+        width: 80%;
+        height:80%;
+    }
+    .aboutus1-left{
+        width:80vw;
+        padding:0;
+        margin:0;
+    }
+    .moreabout-right{
+        margin:0;
+        padding:0;
+    }
+    }
