@@ -544,24 +544,35 @@
 }
 /* Media Queries for Responsiveness */
 @media (max-width: 992px) {
+    
     .moreaboutdiv {
         flex-direction: column; /* Stack items vertically on medium screens */
         align-items: center;
+        padding:0 20px;
     }
 
     .moreabout-left, .moreabout-right {
-        width: 100%; /* Take full width */
+        width: 100%; 
+        /* Take full width */
     }
 
     .overlapdiv {
-        margin-left: 0; /* Adjust overlap for smaller screens */
+        /* margin-left: 0; */
+        /* Adjust overlap for smaller screens */
         margin-top: -50px; /* Adjust overlap for smaller screens */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .overlapdiv p{
+        margin:0;
+        /* padding:0; */
     }
 }
 
 @media (max-width: 768px) {
     .moreaboutdiv{
-        padding:20px;
+        padding:0 20px;
     }
     .moreaboutdiv h1 {
         font-size: 28px; /* Reduce font size */
@@ -599,11 +610,18 @@
     
     .overlapdiv {
         align-content: center;
+        margin:0;
         margin-right: -100px;
         margin-top:10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .overlapdiv p {
-        padding: 25px; /* Adjust padding */
+        margin:0;
+        /* padding:0; */
+        /* padding:10px; */
+        /* padding: 25px; Adjust padding */
     }
 }
 
@@ -627,9 +645,16 @@
         width: 160px;
         height: 180px;
         z-index: 8;
+        padding:0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .overlapdiv p {
-        padding:8px 20px; /* Adjust padding */
+        margin:0;
+        /* padding:5px; */
+        align-self: center;
+        /* padding:8px 10px; Adjust padding */
         font-size: 18px;
     }
     .moreabout-right button {
