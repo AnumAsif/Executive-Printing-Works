@@ -334,9 +334,13 @@
         align-items:flex-start;
         justify-content:flex-start ;
     }
-    .aboutus1-right{
+    .aboutus1-right,.moreabout-right{
       margin:0;
     }
+    .moreabout-right{
+      width:80vw;
+    }
+
     .mission img,
     .vision img {
       width: 70px;

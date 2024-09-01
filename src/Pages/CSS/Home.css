@@ -626,6 +626,7 @@
         font-size: 20px; /* Further reduce font size */
         width: 160px;
         height: 180px;
+        z-index: 8;
     }
     .overlapdiv p {
         padding:8px 20px; /* Adjust padding */
