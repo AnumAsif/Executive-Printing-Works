@@ -171,7 +171,7 @@
             linear-gradient(75deg, #f7dceb, rgba(0,255,0,0) 70.71%),
             linear-gradient(336deg, #cbd9f0, rgba(0,0,255,0) 70.71%); */
 /* Media query for landscape orientation */
-@media screen and (orientation: landscape) {
+@media screen and (orientation: landscape) and (max-width:1024) {
     .hero {
       height: 100vh;
       

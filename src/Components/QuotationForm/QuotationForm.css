@@ -110,6 +110,10 @@ select{
     display:flex;
     gap:20px;
 }
+.page-cover div{
+    flex:1;
+    box-sizing: border-box;
+}
 .file-upload{
     display:flex;
     flex-direction: column;
@@ -298,7 +302,23 @@ input[type="file"] {
         /* flex-direction: column; */
         gap: 20px;
     }
-
+    .customer-info-1,
+    .customer-info-2{
+        flex-direction: column;
+        gap:0;
+    }
+    .page-cover{
+        flex-direction: column;
+        gap:0;
+    }
+    .page-cover div{
+        margin-bottom: 5px;;
+    }
+    .page-cover h4{
+        margin:5px 0;
+        /* font-weight: 400; */
+        font-size: 14px;
+    }
     .file-upload {
         padding: 20px;
     }

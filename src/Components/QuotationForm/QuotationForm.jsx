@@ -240,7 +240,7 @@ const QuotationForm = () => {
                         value={formData.custom_project_type}
                         onChange={handleChange}
                         placeholder="Enter Project Type"
-                        required
+                        required={formData.project_type === "other"}
                         />
                      </div>   
                     )}
@@ -257,7 +257,7 @@ const QuotationForm = () => {
                     {errors.quantity && <p>{errors.quantity}</p>}
 
                     {/* <label htmlFor="page_count">Page Count (for multipage items):</label> */}
-                    <input type="number" id="page_count" name="page_count"  placeholder="Page Count (for multipage items including cover)"value={formData.page_count} onChange={handleChange} />
+                    <input type="number" id="page_count" name="page_count"  placeholder="Page Count (including cover for multi-page items)" value={formData.page_count} onChange={handleChange} />
 
                     {/* <label htmlFor="size">Size/Dimensions:</label> */}
                     {/* <input type="text" id="size" name="size" placeholder="Size/Dimensions (e.g., A4, 8.5x11 inches, W 310mm x H 280mm)" value={formData.size} onChange={handleChange} required /> */}
@@ -270,12 +270,13 @@ const QuotationForm = () => {
                         required
                     >
                         <option value="" disabled>
-                        Select size
+                        Select Print Size (Note: We do not offer prints in sizes A1 or larger)
                         </option>
-                        <option value="A4">A4</option>
-                        <option value="A3">A3</option>
                         <option value="A2">A2</option>
-                        <option value="A5">A5</option>
+                        <option value="A3">A3</option>
+                        <option value="A4">A4</option>
+                        <option value="A4">A5</option>
+                        <option value="A4">A6</option>
                         <option value="custom">Custom Size</option>
                     </select>
                     {errors.size && <p>{errors.size}</p>}
@@ -290,7 +291,7 @@ const QuotationForm = () => {
                         value={formData.custom_length}
                         onChange={handleChange}
                         placeholder="Enter custom length (in cm)"
-                        required
+                        required={formData.size === "custom"}
                         />
 
                         {/* <label htmlFor="customWidth">Custom Width (in cm)</label> */}
@@ -301,7 +302,7 @@ const QuotationForm = () => {
                         value={formData.custom_width}
                         onChange={handleChange}
                         placeholder="Enter custom width (in cm)"
-                        required
+                        required={formData.size === "custom"}
                         />
                     </div>
                     )}

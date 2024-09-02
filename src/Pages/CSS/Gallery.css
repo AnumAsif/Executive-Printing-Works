@@ -1,0 +1,40 @@
+/* gallery.css */
+
+.gallery-container {
+    column-count: 3; /* Number of columns */
+    column-gap: 30px; /* Gap between columns */
+    padding: 20px;
+  }
+  
+  .gallery-item {
+    display: inline-block; /* Necessary to avoid images breaking out of the flow */
+    margin-bottom: 16px; /* Gap between rows */
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 15px 15px -5px 5px;
+    border: 10px ridge rgba(184, 182, 182, 0.51);
+    /* border-radius: 8px; */
+    background-color: rgb(225, 226, 226);
+
+  }
+  
+  .gallery-image {
+    width: 100%;
+    height: auto; /* Keeps the image aspect ratio intact */
+    display: block;
+    /* border-radius: 8px; */
+    box-shadow: 0 14px 18px rgba(0, 0, 0, 0.284);
+  }
+  
+  .gallery-info {
+    text-align: center;
+    padding: 10px;
+    /* background-color:var(--primarycoral); */
+    color:var(--primarycoral);
+    box-sizing: border-box;
+    width: 100%;
+    /* border: 10px ridge rgba(184, 182, 182, 0.51); */
+
+  }
+  

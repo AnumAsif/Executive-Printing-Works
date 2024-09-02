@@ -227,12 +227,7 @@
     }
 
     .info-item {
-        align-items: center;
-    }
-
-    .info-item i {
-        margin-right: 0;
-        margin-bottom: 5px;
+        align-items: left;
     }
 
     .contact-form-section h3 {
@@ -244,7 +239,10 @@
         font-size: 14px;
         line-height: 20px;
     }
-
+    .contact-form-group{
+        flex-direction: column;
+        gap:0;
+    }
     .contact-map h4 {
         font-size: 18px;
         line-height: 24px;

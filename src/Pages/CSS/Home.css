@@ -20,7 +20,11 @@
     top:0;
     gap:20px;
 }
+.aboutus1 div{
+    flex:1;
+}
 .aboutus1-left{
+    
     width:60%;
     
 }
@@ -768,7 +772,7 @@
 }
 
 
-@media screen and (orientation: landscape) {
+@media screen and (orientation: landscape) and (max-width: 1024px){
     .consult-container,.consult {
       height: 100vh;
     }

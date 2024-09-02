@@ -67,8 +67,4 @@
       padding-left: 5%;
     }
   }
-  @media screen and (orientation: landscape) {
-    .hero2-container,.hero2 {
-      /* height: 100vh; */
-    }
-}
+  

@@ -68,7 +68,7 @@ const FeedbackForm = () => {
                         <input 
                             type="text" 
                             name="firstName" 
-                            placeholder="First name" 
+                            placeholder="First Name" 
                             value={formData.firstName} 
                             onChange={handleChange} 
                             required 
@@ -77,7 +77,7 @@ const FeedbackForm = () => {
                         <input 
                             type="text" 
                             name="lastName" 
-                            placeholder="Last name" 
+                            placeholder="Last Name" 
                             value={formData.lastName} 
                             onChange={handleChange} 
                             required 
@@ -104,6 +104,39 @@ const FeedbackForm = () => {
                         />
                         {errors.phone && <p>{errors.phone}</p>}
                     </div>    
+                </section>
+
+                {/* How did you find out about us? */}
+                <section>
+                <label className="question">How did you find out about us?</label>
+                <div className="feedback-radio-group">
+                    {['Social Media', 'Reference', 'Walk-in Customer','Regular Customer', 'Google Search', 'Others'].map((option) => (
+                    <label key={option} className="option">
+                        <input
+                        type="radio"
+                        name="found_us"
+                        value={option}
+                        checked={formData.found_us === option}
+                        onChange={(e) => setFormData({ ...formData, found_us: e.target.value })}
+                        />
+                        {option}
+                    </label>
+                    ))}
+                </div>
+                <br/>
+                {/* Show input field if 'Other' is selected */}
+                {formData.found_us === 'Others' && (
+                    <div className="form-group">
+                    <input
+                        type="text"
+                        name="found_us_other"
+                        placeholder="Please specify"
+                        value={formData.found_us_other || ''}
+                        onChange={(e) => setFormData({ ...formData, found_us_other: e.target.value })}
+                        required={formData.found_us === 'Others'}
+                    />
+                    </div>
+                )}
                 </section>
 
                 {/* Rating */}
