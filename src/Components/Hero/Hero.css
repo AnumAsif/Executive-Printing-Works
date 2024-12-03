@@ -1,6 +1,7 @@
 .hero {
     width: 100vw;
     height: 70vh;
+    min-height: 450px; /* Adjust for landscape orientation */
     background-image: 
         linear-gradient(to right, rgba(64, 67, 78, 0.9) 50%, rgba(16, 44, 91, 0.2) 80%),
         url("../../Components/Assets/printingmachine.jpg");
@@ -171,9 +172,9 @@
             linear-gradient(75deg, #f7dceb, rgba(0,255,0,0) 70.71%),
             linear-gradient(336deg, #cbd9f0, rgba(0,0,255,0) 70.71%); */
 /* Media query for landscape orientation */
-@media screen and (orientation: landscape) and (max-width:1024) {
+/* @media screen and (orientation: landscape) and (max-width:1024) {
     .hero {
       height: 100vh;
       
     }
-}   
+}    */

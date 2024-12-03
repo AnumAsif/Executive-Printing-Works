@@ -1,9 +1,9 @@
 import React from 'react';
 import './Tabs.css';
 
-const Tabs = ({ tabs, activeTab, handleTabClick }) => {
+const Tabs = ({ tabs, activeTab, handleTabClick, className }) => {
     return (
-        <ul className="aboutus-tabs">
+        <ul className={`aboutus-tabs ${className}`}>
             {tabs.map((tab) => (
                 <li
                     key={tab.id}

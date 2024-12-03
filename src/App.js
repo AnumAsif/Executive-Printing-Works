@@ -4,7 +4,7 @@ import Navbar from './Components/Navbar/Navbar';
 import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
 import {BrowserRouter,Routes, Route} from 'react-router-dom';
 import Home from './Pages/Home';
-import Product from './Pages/Gallery';
+import Products from './Pages/Products';
 import About from './Pages/About';
 import Services from './Pages/Services';
 import Cart from './Pages/Cart';
@@ -25,9 +25,9 @@ function App() {
         <Routes>
           <Route path='/Executive-Printing-Works/' element={<Home/>} />
           <Route path='/gallery' element={<Gallery/>} />
-          {/* <Route path='/product' element={<Product/>}>
-            <Route path=':productID' element={<Product/>}/>
-          </Route>   */}
+          <Route path='/products' element={<Products/>}>
+            {/* <Route path=':productID' element={<Product/>}/> */}
+          </Route>  
           <Route path='/cart' element={<Cart/>} />
           <Route path='/login' element={<LoginSignup/>} />
           <Route path='/about' element={<About/>} />

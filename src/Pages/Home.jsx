@@ -126,7 +126,7 @@ function Home() {
       
       <div className="moreaboutdiv">
         <div className="moreabout-left">
-          <img src={Colorchart} alt="color book for reference"/>
+          <img src={Colorchart} alt="color book for reference" className="imagebelowoverlap"/>
           <div className="overlapdiv"><p>Service You Can Count On</p></div>
         </div>
         <div className="moreabout-right">

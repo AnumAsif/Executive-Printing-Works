@@ -42,7 +42,7 @@ export default function DetailedServices() {
 
     return (
         <div>
-            <Hero2 image={aboutUsImage} heading="Services" />
+            {/* <Hero2 image={aboutUsImage} heading="Services" /> */}
             <Tabs tabs={tabs} activeTab={activeTab} handleTabClick={handleTabClick} />
             <div className="service-tab-content">
                 <div className={`printing-consultation ${activeTab === 'printing-consultation' ? 'active' : ''}`}>

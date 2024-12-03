@@ -6,7 +6,10 @@ import aboutUsImage from '../Components/Assets/printingpaper.jpg';
 import Tabs from '../Components/Tabs/Tabs';
 import about1 from '../Components/Assets/visionmission.jpg';
 import about2 from '../Components/Assets/success.jpg';
-import director from '../Components/Assets/director.jpg';
+import mbc from '../Components/Assets/Directors/MBC.jpg';
+import wajid from '../Components/Assets/Directors/Wajid.jpg';
+import suhayb from '../Components/Assets/Directors/Suhayb.jpg';
+
 import MachinesSlider from './MachinesSlider.jsx';
 
 export default function About() {
@@ -42,7 +45,7 @@ export default function About() {
     ];
   return (
     <div>
-        <Hero2 image={aboutUsImage} heading="About Us" />
+        {/* <Hero2 image={aboutUsImage} heading="About Us" /> */}
         <Tabs tabs={tabs} activeTab={activeTab} handleTabClick={handleTabClick} />
 
         <div className="about-tab-content">
@@ -72,7 +75,7 @@ export default function About() {
                 {/* <p className="directorP">Meet the Directors of Executive Printing Works, a family-owned business dedicated to providing high-quality printing services in Kenya.</p> */}
                 <div className="director-info m">
                     <div className="info-left">
-                        <img src={director} alt=""/>
+                        <img src={mbc} alt=""/>
                         <h1>Muhamed Bilal Cockar</h1>
                         <h4>Founder & CEO of the Company</h4>
                     </div>
@@ -92,7 +95,7 @@ export default function About() {
                 </div>
                 <div className="director-info w">
                     <div className="info-left">
-                        <img src={director} alt=""/>
+                        <img src={wajid} alt=""/>
                         <h1>Wajid Cockar</h1>
                         <h4>Finance and Managing Director</h4>
                     </div>
@@ -112,7 +115,7 @@ export default function About() {
                 </div>
                 <div className="director-info s">
                     <div className="info-left">
-                        <img src={director} alt=""/>
+                        <img src={suhayb} alt=""/>
                         <h1>Suhayb Cockar</h1>
                         <h4>Marketing and Managing Director</h4>
                     </div>

@@ -9,6 +9,15 @@
     position: relative;
     padding:0px;
   }
+  .subtabs {
+    display: flex; /* Use flexbox to lay out tabs */
+    flex-direction: column; /* Arrange tabs vertically */
+    width: 400px; /* Adjust width as needed */
+    background-color: rgba(0, 0, 0, 0.16);
+    margin:0;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
   
   .tab-link {
     list-style: none;

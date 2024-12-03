@@ -41,12 +41,12 @@ export default function Contact() {
         { id: 'quotation-form', label: 'Get a Quote' },
         { id: 'feedback', label: 'Feedback' },
         { id: 'contact-us', label: 'Contact Us' },
-        { id:'quote-form', label: 'Quote Test'}
+        // { id:'quote-form', label: 'Quote Test'}
     ];
 
     return (
         <div>
-            <Hero2 image={aboutUsImage} heading="Contact Us" />
+            {/* <Hero2 image={aboutUsImage} heading="Contact Us" /> */}
             <Tabs tabs={tabs} activeTab={activeTab} handleTabClick={handleTabClick} />
             <div className="contact-tab-content">
                 <div className={`quotation-form ${activeTab === 'quotation-form' ? 'active' : ''}`}>
@@ -58,9 +58,9 @@ export default function Contact() {
                 <div className={`contact-us ${activeTab === 'contact-us' ? 'active' : ''}`}>
                     <ContactForm />
                 </div>
-                <div className={`quote-form ${activeTab === 'quote-form' ? 'active' : ''}`}>
+                {/* <div className={`quote-form ${activeTab === 'quote-form' ? 'active' : ''}`}>
                     <QuoteForm />
-                </div>
+                </div> */}
             </div>
         </div>
     );

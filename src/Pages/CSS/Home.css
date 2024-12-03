@@ -3,7 +3,8 @@
 }
 .hero-container {
     width: 100vw;
-    height: 70vh;
+    height:auto;
+    /* height: 70vh; */
     position: relative;
     left: 50%;
     right: 50%;
@@ -149,7 +150,7 @@
     }       
    
     .aboutus1-right {
-        padding:10px;
+        /* padding:10px; */
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
@@ -432,7 +433,7 @@
 
 @media (max-width: 576px) {
     .processdiv{
-        /* margin:20px; */
+        margin:20px;
     }
     .processcyclediv {
         margin:5px;
@@ -473,6 +474,9 @@
     width:80%;
     height:468px;
 }
+.imagebelowoverlap{
+    z-index: -1;
+}
 .overlapdiv{
     width:208px;
     height:220px;
@@ -493,6 +497,7 @@
     align-items: center;
     padding:35px;
     box-sizing: border-box;
+    z-index: 8;
     /* margin-bottom: 5px; */
 }
 .overlapdiv p{
@@ -625,6 +630,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        z-index: 3;
     }
     .overlapdiv p {
         padding: 25px;
@@ -774,24 +780,19 @@
 
 @media screen and (orientation: landscape) and (max-width: 1024px){
     .consult-container,.consult {
-      height: 100vh;
+      height: 80vh;
     }
-    .aboutus1{
-        margin:0;
-        padding:0;
-        margin-top:150px;
+    .moreabout-left{
+        justify-content: center;
     }
-    .aboutus1-right img{
-        width: 80%;
-        height:80%;
-    }
-    .aboutus1-left{
-        width:80vw;
-        padding:0;
-        margin:0;
+    .moreabout-left img{
+        width:70%;
+        height:auto;
     }
     .moreabout-right{
-        margin:0;
-        padding:0;
+        margin-top: 20px;
     }
+    .processdiv{
+        margin:50px;
     }
+}

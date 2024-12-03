@@ -1,0 +1,35 @@
+.product-list {
+    flex:5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: center;
+    gap: 30px;
+  }
+    
+/* For tablets and small screens */
+@media (max-width: 1024px) {
+  .product-list {
+      /* flex-direction: column;  */
+      justify-content: center;
+      gap: 20px; /* Adjust gap for smaller screens */
+      padding: 15px 0; /* Reduce padding for smaller screens */
+  }
+}
+
+/* For mobile screens */
+@media (max-width: 768px) {
+  .product-list {
+      gap: 15px; /* Reduce gap further for smaller screens */
+      padding: 10px 0; /* Further reduce padding */
+  }
+}
+
+/* For very small mobile screens */
+@media (max-width: 480px) {
+  .product-list {
+      flex-direction: column;
+      gap: 10px;
+      padding: 5px 0;
+  }
+}

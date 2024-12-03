@@ -21,11 +21,11 @@
     font-weight: 700;
 }
 
-.quotation-form-container:first-child p {
+.getaquote-p {
     font-size: 16px;
     color: var(--primarycoral);
     margin-bottom: 20px;
-    text-align: center;
+    text-align: center;  
 }
 
 .quotation-form h3 {
@@ -51,6 +51,7 @@
     flex-direction: column;
 }
 
+
 /* Label and input styling */
 .quotation-form label {
     display: block;
@@ -65,6 +66,7 @@ input[type="email"],
 input[type="tel"],
 input[type="number"],
 input[type="date"],
+input[type="string"],
 textarea,
 select {
     box-sizing: border-box;
@@ -159,9 +161,12 @@ input[type="email"]:focus,
 input[type="tel"]:focus,
 input[type="number"]:focus,
 input[type="date"]:focus,
+input[type="string"]:focus,
 textarea:focus,
 select:focus {
     border-color: var(--primarycoral);
+    /* border-color: var(--accentcordovan); */
+    /* border:2px solid var(--primarycoral); */
     outline: none;
 }
 
@@ -199,7 +204,18 @@ input[type="file"] {
     border: none;
     margin-bottom: 20px;
 }
-
+.remove-button{
+    background-color: rgba(64, 67, 78);
+    color: var(--primarycream);
+    border: none;
+    padding: 14px 28px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    /* margin: 30px auto 0; */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
 /* Button styling */
 .quote-submit-button {
     background-color: var(--accentcordovan);
@@ -220,12 +236,12 @@ input[type="file"] {
 }
 
 /* Error message styling */
-.quotation-form p {
+/* .quotation-form p {
     color: #E74C3C;
     font-size: 14px;
     margin-top: -8px;
     margin-bottom: 15px;
-}
+} */
 
 /* Status message styling */
 .status-message {
@@ -254,6 +270,14 @@ input[type="file"] {
     gap:20px;
     /* justify-content: center; */
     /* align-items: center; */
+}
+
+.errormsg{
+    color: #E74C3C;
+    font-size: 14px;
+    margin-top: -8px;
+    margin-bottom: 15px;
+    /* text-align: center; */
 }
 
 /*Responsive styles for different screen sizes */

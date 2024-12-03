@@ -8,7 +8,7 @@ import Multiselect from 'multiselect-react-dropdown';
 
 
 const QuotationForm = () => {
-    const [selectedFile, setSelectedFile] = useState(null);
+    // const [selectedFile, setSelectedFile] = useState(null);
     const [uploadMessage, setUploadMessage] = useState("");
     const [formData, setFormData] = useState({
         customer_name: '',
@@ -25,11 +25,11 @@ const QuotationForm = () => {
         custom_length:null,
         custom_width:null,
         paper_type: '',
-        cover_paper_type:'',
+        cover_paper_type:null,
         page_grammage: null, // New field
         cover_grammage: null, // New field
         color_options: '',
-        cover_color_options:'',
+        cover_color_options:null,
         finishing: [],
         design_needed: 'no',
         design_upload: null,
@@ -43,24 +43,107 @@ const QuotationForm = () => {
         budget: ''
     });
    
-    const [errors, setErrors] = useState({});
+    const [errors, setErrors] = useState({
+        customer_email: '',
+        customer_phone: '',
+        budget:''
+    });
+    const handleBlur = (e) => {
+        const { name, value } = e.target;
+
+        // Validate the phone number format (Kenyan phone number)
+        if (name === 'customer_phone') {
+            const phonePattern = /^(?:\+254|0)?(7\d{8})$/;
+            if (!phonePattern.test(value)) {
+                setErrors({
+                    ...errors,
+                    customer_phone: '* Invalid phone number. Use format +2547XXXXXXXX or 07XXXXXXXX.'
+                });
+            } else {
+                setErrors({
+                    ...errors,
+                    customer_phone: ''
+                });
+            }
+        }
+
+        // Validate the email format
+        if (name === 'customer_email') {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(value)) {
+                setErrors({
+                    ...errors,
+                    customer_email: '* Please enter a valid email address.'
+                });
+            } else {
+                setErrors({
+                    ...errors,
+                    customer_email: ''
+                });
+            }
+        }
+
+         // Validate budget input to allow only positive numbers
+        if (name === 'budget') {
+            // Allow empty value since it's optional
+            if (value === '') {
+                setErrors({ ...errors, budget: '' });
+            } else {
+                const budgetPattern = /^\d+(\.\d{1,2})?$/; // Matches positive numbers with up to 2 decimal places
+                const minBudget = 100; // Example minimum budget
+                const maxBudget = 10000; // Example maximum budget
+
+                if (!budgetPattern.test(value) || parseFloat(value) < minBudget || parseFloat(value) > maxBudget) {
+                    setErrors({
+                        ...errors,
+                        budget: `Please enter a valid budget between KES ${minBudget} and KES ${maxBudget}.`
+                    });
+                } else {
+                    setErrors({ ...errors, budget: '' });
+                }
+            }
+        }
+
+    };
+
     const [submissionStatus, setSubmissionStatus] = useState('');
 
     const handleChange = (e) => {
         const { name, value, type } = e.target;
         if (type === 'file') {
-            setFormData({
-                ...formData,
-                [name]: e.target.files[0] || null
-            });
-            setUploadMessage(`File selected: ${e.target.files[0].name}`);
+            const file = e.target.files[0];
+            const allowedExtensions = ['ai', 'esp', 'pdf', 'id', 'psd'];
+    
+            if (file) {
+                const fileExtension = file.name.split('.').pop().toLowerCase();
+    
+                if (allowedExtensions.includes(fileExtension)) {
+                    setFormData({
+                        ...formData,
+                        [name]: file
+                    });
+                    setUploadMessage(`File selected: ${file.name}`);
+                    setErrors({ ...errors, design_upload: '' });
+                } else {
+                    setErrors({
+                        ...errors,
+                        design_upload: `Invalid file type. Please upload a file of type: ${allowedExtensions.join(', ')}.`
+                    });
+                    setFormData({
+                        ...formData,
+                        [name]: null
+                    });
+                    setUploadMessage('');
+                }
+            }
         } else {
             setFormData({
                 ...formData,
                 [name]: value
             });
-        }
-    };
+            
+        };
+    }
     // Handle file removal
     const handleFileRemove = () => {
         setFormData({
@@ -71,12 +154,6 @@ const QuotationForm = () => {
          // Update message
     };
 
-    // const handleFinishingChange = (selectedList) => {
-    //     setFormData({
-    //       ...formData,
-    //       finishing: selectedList.map(item => item.value) // Extracting the 'value' from selected items
-    //     });
-    //   };
     const handleSelect = (selectedList, selectedItem) => {
         setFormData((prevState) => ({
         ...prevState,
@@ -126,6 +203,11 @@ const QuotationForm = () => {
         });
         return sanitizedData;
     };
+    const getTomorrowDate = () => {
+        const today = new Date();
+        today.setDate(today.getDate() + 1); // Move to tomorrow's date
+        return today.toISOString().split('T')[0]; // Format to YYYY-MM-DD
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -142,17 +224,9 @@ const QuotationForm = () => {
                 formDataToSend.append(key, sanitizedData[key]);
             }
         }
-        // formDataToSend.append('design_upload', fileInput.files[0]);
-        // console.log("attached file is:"+fileInput.files[0]);
-        // for (const key in formData){
-        //     if (formData[key]!= null){
-        //         formDataToSend.append(key, formData[key])
-        //     }
-        // }
+        
+   
 
-        // if (formData.design_upload) {
-        //     formDataToSend.append('design_upload', formData.design_upload);
-        // }
         
         try {
             await axios.post('http://localhost:4000/api/quotes/submit-quotation', formDataToSend, {
@@ -181,7 +255,7 @@ const QuotationForm = () => {
     return (
         <div className="quotation-form-container" id='quotation-form-container'>
             <h1>Get a Quote</h1>
-            <p>Get a Quote within a Day Upon Form Submission</p>
+            <p className="getaquote-p">Get a Quote within a Day Upon Form Submission</p>
             <form onSubmit={handleSubmit} encType="multipart/form-data" className="quotation-form">
             {/* Customer Information */}
                 <section>
@@ -190,18 +264,17 @@ const QuotationForm = () => {
                         <div className="customer-info-1">
                         {/* <label htmlFor="name">Name:</label> */}
                             <input type="text" id="name" name="customer_name"  placeholder="Name" value={formData.customer_name} onChange={handleChange} required />
-                            {errors.customer_name && <p>{errors.customer_name}</p>}
-
+                            {errors.customer_name && <p className="errormsg" >{errors.customer_name}</p>}
                             {/* <label htmlFor="email">Email:</label> */}
-                            <input type="email" id="email" name="customer_email" placeholder="Email" value={formData.customer_email} onChange={handleChange} required />
-                            {errors.customer_email && <p>{errors.customer_email}</p>}
+                            <input type="email" id="email" name="customer_email" placeholder="Email" value={formData.customer_email} onChange={handleChange} onBlur={handleBlur} required />
                         </div>
+                        {errors.customer_email && <p className="errormsg" >{errors.customer_email}</p>}
                         <div className="customer-info-2">
-                            <input type="tel" id="phone" name="customer_phone"  placeholder="Phone Number" value={formData.customer_phone} onChange={handleChange} required />
-                            {errors.customer_phone && <p>{errors.customer_phone}</p>}
+                            <input type="tel" id="phone" name="customer_phone"  placeholder="Phone Number" value={formData.customer_phone} onChange={handleChange} onBlur={handleBlur} required />
                         {/* <label htmlFor="company">Company Name:</label> */}
                             <input type="text" id="company" name="customer_company"   placeholder="Company Name" value={formData.customer_company} onChange={handleChange} />
                         </div>
+                        {errors.customer_phone && <p className="errormsg" >{errors.customer_phone}</p>}
                         <div className="customer-info-3">
                             {/* <label htmlFor="contact_method">Preferred Contact Method:</label> */}
                             <select id="contact_method" name="contact_method" value={formData.contact_method} onChange={handleChange}>
@@ -259,9 +332,6 @@ const QuotationForm = () => {
                     {/* <label htmlFor="page_count">Page Count (for multipage items):</label> */}
                     <input type="number" id="page_count" name="page_count"  placeholder="Page Count (including cover for multi-page items)" value={formData.page_count} onChange={handleChange} />
 
-                    {/* <label htmlFor="size">Size/Dimensions:</label> */}
-                    {/* <input type="text" id="size" name="size" placeholder="Size/Dimensions (e.g., A4, 8.5x11 inches, W 310mm x H 280mm)" value={formData.size} onChange={handleChange} required /> */}
-                    {/* {errors.size && <p>{errors.size}</p>} */}
                     <select
                         id="size"
                         name="size"
@@ -275,8 +345,8 @@ const QuotationForm = () => {
                         <option value="A2">A2</option>
                         <option value="A3">A3</option>
                         <option value="A4">A4</option>
-                        <option value="A4">A5</option>
-                        <option value="A4">A6</option>
+                        <option value="A5">A5</option>
+                        <option value="A6">A6</option>
                         <option value="custom">Custom Size</option>
                     </select>
                     {errors.size && <p>{errors.size}</p>}
@@ -334,7 +404,7 @@ const QuotationForm = () => {
                         <div className="cover">
                             <h4>Cover Details</h4>
                             {/* <label htmlFor="cover_paper_type">Paper Type (Cover):</label> */}
-                            <select id="cover_paper_type" name="cover_paper_type" value={formData.cover_paper_type} onChange={handleChange} required>
+                            <select id="cover_paper_type" name="cover_paper_type" value={formData.cover_paper_type} onChange={handleChange}>
                                 <option value="" selected>Select cover paper type</option>
                                 <option value="gloss">Gloss</option>
                                 <option value="matte">Matte</option>
@@ -344,7 +414,7 @@ const QuotationForm = () => {
                             </select>
                             <input type="number" id="cover_grammage" name="cover_grammage"  placeholder="Paper Grammage (Cover)" value={formData.cover_grammage} onChange={handleChange} />
                             {/* <label htmlFor="color_options">Color Options (Cover):</label> */}
-                            <select id="cover_color_options" name="cover_color_options" value={formData.cover_color_options} onChange={handleChange} required>
+                            <select id="cover_color_options" name="cover_color_options" value={formData.cover_color_options} onChange={handleChange}>
                                 <option value="">Select Color Options for Cover</option>
                                 <option value="full_color">Full Color</option>
                                 <option value="six_color">6 color</option>
@@ -382,11 +452,12 @@ const QuotationForm = () => {
                         <FontAwesomeIcon className='upload-icon' icon={faFileUpload} />
                         <label>Upload Your Design</label>
                         <input type="file" id = 'design_upload' name='design_upload' onChange={handleChange}  />
+                        {errors.design_upload && <p style={{ color: 'red' }}>{errors.design_upload}</p>}
                     </div>
                     {formData.design_upload && (
                             <div className="file-info">
                                 <p>{uploadMessage}</p>
-                                <button type="button" onClick={handleFileRemove}>
+                                <button type="button" onClick={handleFileRemove} className="remove-button">
                                     Remove File
                                 </button>
                             </div>
@@ -423,8 +494,14 @@ const QuotationForm = () => {
                         <textarea id="shipping_address" name="shipping_address"  placeholder="Shipping Address" value={formData.shipping_address} onChange={handleChange}></textarea>
                     )}    
                     <label htmlFor="completion_date">Preferred Completion Date:</label>
-                    <input type="date" id="completion_date" name="completion_date" value={formData.completion_date} onChange={handleChange} />
-
+                    <input 
+                        type="date" 
+                        id="completion_date" 
+                        name="completion_date" 
+                        value={formData.completion_date} 
+                        onChange={handleChange} 
+                        min={getTomorrowDate()} // Restrict to tomorrow and future dates
+                    />
                     <label htmlFor="urgency">Urgency:</label>
                     <select id="urgency" name="urgency" value={formData.urgency} onChange={handleChange}>
                         <option value="standard">Standard</option>
@@ -464,7 +541,8 @@ const QuotationForm = () => {
                     <textarea id="notes" name="notes"   placeholder="Additional Notes/Instructions:" value={formData.notes} onChange={handleChange}></textarea>
 
                     {/* <label htmlFor="budget">Budget (Optional):</label> */}
-                    <input type="text" id="budget" name="budget" placeholder="Budget (Optional):" value={formData.budget} onChange={handleChange} />
+                    <input type="text" id="budget" name="budget" placeholder="Budget (Optional):" value={formData.budget} onBlur={handleBlur} onChange={handleChange} />
+                    {errors.budget && <p>{errors.budget}</p>}
                 </section>
 
                 <button type="submit" className="quote-submit-button">Request Quote</button>
