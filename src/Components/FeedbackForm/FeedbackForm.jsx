@@ -40,20 +40,59 @@ const FeedbackForm = () => {
     const validateForm = () => {
         const newErrors = {};
         if (!formData.firstName) newErrors.firstName = 'First name is required';
-        if (!formData.lastName) newErrors.lastName = 'Last name is required';
+        // if (!formData.lastName) newErrors.lastName = 'Last name is required';
         if (!formData.email) newErrors.email = 'Email is required';
         if (!formData.phone) newErrors.phone = 'Phone number is required';
-
+        if (!formData.email) newErrors.email = 'Email address is required';
+        else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
+        if (!formData.phone) newErrors.phone = 'Phone number is required';
+        else if (!/^\d{10}$/.test(formData.phone)) newErrors.phone = 'Phone number should be 10 digits';
+        if (formData.found_us === 'Others' && !formData.found_us_other) {
+            newErrors.found_us_other = 'Please specify how you found us';
+        }
         setErrors(newErrors);
         return Object.keys(newErrors).length === 0;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         if (!validateForm()) {
             return;
         }
         // Handle form submission logic here
+        try {
+            const response = await fetch('http://localhost:4000/api/feedback/submit-feedback', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+    
+            const result = await response.json();
+    
+            if (response.ok) {
+                alert('Feedback submitted successfully!');
+                setFormData({
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    phone: '',
+                    rating: 0,
+                    servicesUsed: [],
+                    quality: '',
+                    timeliness: '',
+                    recommend: '',
+                    comments: '',
+                    useAgain: '',
+                    found_us: '',
+                    found_us_other: '',
+                });
+            } else {
+                alert(result.message || 'Something went wrong.');
+            }
+        } catch (error) {
+            console.error('Error submitting feedback:', error);
+            alert('Failed to submit feedback. Please try again later.');
+        }
         console.log('Form submitted successfully', formData);
     };
 

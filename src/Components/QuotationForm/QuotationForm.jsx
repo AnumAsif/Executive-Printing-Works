@@ -234,10 +234,10 @@ const QuotationForm = () => {
                     'Content-Type': 'multipart/form-data'
                 }
             });
-            setSubmissionStatus('Quotation submitted successfully!');
-
+            // setSubmissionStatus('Quotation submitted successfully!');
+            alert('Quotation submitted successfully!');
         } catch (error) {
-            console.error('Error submitting form:', error.message);
+            // console.error('Error submitting form:', error.message);
             if (error.response) {
                 console.error('Response data:', error.response.data);
                 // console.error('Response status:', error.response.status);
@@ -247,7 +247,8 @@ const QuotationForm = () => {
             } else {
                 console.error('General error:', error.message);
             }
-            setSubmissionStatus('Error submitting form');
+            // setSubmissionStatus('Error submitting form');
+            alert(error.message || 'Something went wrong.');
         }
     };
     

@@ -1,4 +1,15 @@
 /* ContactForm.css */
+
+/* Flashing animation */
+@keyframes flash {
+    0%, 100% { opacity: 1; } /* Fully visible */
+    50% { opacity: 0; }      /* Invisible */
+  }
+.flashing-text {
+    animation: flash 2s infinite; /* Apply the animation */
+    /* color: #ff0000;     */
+    /* font-size: 20px;  */
+}  
 .contact-container {
     box-sizing: border-box;
     max-width: 1400px;

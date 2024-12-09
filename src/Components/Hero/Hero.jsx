@@ -18,8 +18,8 @@ function Hero() {
   return (
     <div className="hero">
       <div className="hero-left">
-        <h1>Print With Precision</h1>
-        <h1>Impress With Impact</h1>
+        <h1 className="typing-text">Print With Precision</h1>
+        <h1 className="typing-text secondh1">Impress With Impact</h1>
         <br />
         <h4>UNLOCK THE POWER OF PRINT WITH EPW</h4>
         <h4>YOUR PRINTING PARTNER FOR EXCELLENCE</h4>

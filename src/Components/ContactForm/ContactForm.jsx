@@ -38,7 +38,7 @@ const ContactForm = () => {
 
             <div className="form-map-container">
                 <div className="contact-form-section" id='contact-form-section'>
-                    <h3>Put Life Into Your Ideas With Us</h3>
+                    <h3 className="flashing-text">Put Life Into Your Ideas With Us</h3>
                     <p>Let’s discuss your project and find out what we can do to provide value.</p>
                     <form className="contact-form">
                         <div className="contact-form-group">
