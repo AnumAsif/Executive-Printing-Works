@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Executive-Printing-Works/static/css/main.4c8c945c.css",
-    "main.js": "/Executive-Printing-Works/static/js/main.33b296e9.js",
+    "main.css": "/Executive-Printing-Works/static/css/main.5e9be3ce.css",
+    "main.js": "/Executive-Printing-Works/static/js/main.54c843cb.js",
     "static/js/488.b200de0d.chunk.js": "/Executive-Printing-Works/static/js/488.b200de0d.chunk.js",
     "static/media/printing.jpg": "/Executive-Printing-Works/static/media/printing.adbd40bda7f60db749c0.jpg",
     "static/media/hard-cover-book.png": "/Executive-Printing-Works/static/media/hard-cover-book.6a2c139dc698ebb275ae.png",
@@ -65,12 +65,12 @@
     "static/media/slick.ttf": "/Executive-Printing-Works/static/media/slick.c94f7671dcc99dce43e2.ttf",
     "static/media/slick.woff": "/Executive-Printing-Works/static/media/slick.295183786cd8a1389865.woff",
     "index.html": "/Executive-Printing-Works/index.html",
-    "main.4c8c945c.css.map": "/Executive-Printing-Works/static/css/main.4c8c945c.css.map",
-    "main.33b296e9.js.map": "/Executive-Printing-Works/static/js/main.33b296e9.js.map",
+    "main.5e9be3ce.css.map": "/Executive-Printing-Works/static/css/main.5e9be3ce.css.map",
+    "main.54c843cb.js.map": "/Executive-Printing-Works/static/js/main.54c843cb.js.map",
     "488.b200de0d.chunk.js.map": "/Executive-Printing-Works/static/js/488.b200de0d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4c8c945c.css",
-    "static/js/main.33b296e9.js"
+    "static/css/main.5e9be3ce.css",
+    "static/js/main.54c843cb.js"
   ]
 }
