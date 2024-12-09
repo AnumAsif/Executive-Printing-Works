@@ -10,11 +10,12 @@ export default function Topbar() {
             <div className='left'>
                 <div className='contact'>
                     <FontAwesomeIcon className='topbar-icon' icon={faEnvelope} />
-                    <span className='text'>info@executive.co.ke</span>
+                    <a href="mailto:info@executive.co.ke" className='text'>info@executive.co.ke
+                    </a>
                 </div>
                 <div className='contact'>
                     <FontAwesomeIcon className='topbar-icon' icon={faPhone} />
-                    <span className='text'>+254 738 711405 / +254 722 749300</span>
+                    <a className='text' href="tel:+254 738 711405">+254 738 711405</a>/<a className='text' href="tel:+254 722 749300"> +254 722 749300</a>
                 </div>
             </div>
             <div className='right'>

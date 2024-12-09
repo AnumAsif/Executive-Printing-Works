@@ -5,7 +5,7 @@ import finishing from './finishing.jpg'
 import AlySir from './TestimonyImages/EHS_ASM.png';
 import KAM from './TestimonyImages/KAM.jpeg';
 import tamarind from './TestimonyImages/tamarind_group.png';
-
+import alisons from './TestimonyImages/alisons.png'
 // import delivery from './delivery.jpg'
 
 // import offsetmachine from './offset.jpg'
@@ -31,9 +31,9 @@ let testimony_data = [
     },
     {
         id:4,
-        client_name:'Finishing',
-        client_image:finishing,
-        client_testimony:"Elevate your printed materials with professional finishing such as laminating, binding, die-cutting & embossing. Finishing services add a professional touch that enhances the durability and appeal of your prints.",
+        client_name:'Zeeshan Alimohamed, Managing Director, Alison Products (Kenya)Ltd.',
+        client_image:alisons,
+        client_testimony:"Executive Printing Works has been our trusted partner for all our printing needs, from product labels and stickers to business cards and letterheads. Their quality, attention to detail, and timely delivery are unmatched. Highly recommended!",
     }
 ]
 export default testimony_data;

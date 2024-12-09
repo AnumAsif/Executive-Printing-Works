@@ -27,7 +27,7 @@ const Footer = () => {
                     <div className="footer-links">
                         <Link to='/about?tab=who-we-are' onClick={scrollToTop}>About</Link>
                         <Link to='/detailedservices' onClick={scrollToTop}>Services</Link>
-                        <Link to='/product' onClick={scrollToTop}>Products</Link>
+                        <Link to='/products' onClick={scrollToTop}>Products</Link>
                         <Link to='/contact' onClick={scrollToTop}>Contact</Link>
                     </div>
                 </div>
@@ -38,7 +38,7 @@ const Footer = () => {
                         <p>P.O. Box 22677, 00400</p>
                         <p>Nairobi, Kenya</p>
                         <p>Tel: +254 (0)20 2613382, 2613392</p>
-                        <p>Mob: +254 (0)722 978428, (0)738 711405</p>
+                        <p>Mob: +254 (0)722 749300, (0)738 711405</p>
                         <p>Email: info@executive.co.ke</p>
                     </div>
                     <div className="socialmediaicons">
@@ -52,7 +52,7 @@ const Footer = () => {
             </div>
             <div className="footer-copyright">
                 <hr />
-                <p>Copyright: © 2024 | All Rights Reserved</p>
+                <p>Copyright: © 2025 | All Rights Reserved</p>
             </div>
         </div>    
     );

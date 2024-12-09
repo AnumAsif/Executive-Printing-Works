@@ -40,17 +40,27 @@
   
   .nav-menu li {
     cursor: pointer;
-    color: var(--primarycoral);
+    /* color: var(--primarycoral); */
     font-size: 18px;
     line-height: 27px;
   }
   
-  .nav-menu a {
-    text-decoration: none;
-    color: inherit;
-  }
   
-  .nav-login button {
+
+.nav-menu a{
+  text-decoration: none;
+  color: var(--primarycoral);
+  /* color: inherit; */
+}
+
+
+.navactive{
+  /* transform: scale(1.5);   */
+  color: var(--accentcordovan) !important; 
+  font-weight: 600;
+  font-size: 19px;
+}
+.nav-login button {
     width: 100px;
     height: 40px;
     font-family: 'Poppins', sans-serif;

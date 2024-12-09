@@ -1,6 +1,7 @@
 /* Typing effect */
 /* Base styles for both */
 /* Base styles for both */
+
 .typing-text {
     display: inline-block;      /* Ensure text stays on one line */
     overflow: hidden;           /* Hide overflowing text */

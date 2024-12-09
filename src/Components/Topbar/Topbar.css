@@ -28,12 +28,21 @@
 
 .text {
     font-size: 14px;
+    text-decoration: none;
+    color: var(--primarycoral);
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    display: inline-block;
+    /* padding: 0 1rem;  */
 }
-
+.text:hover {
+    transform: scale(1.05);  /* Increase font size on hover */
+    color: var(--accentwine);
+}
 .right {
     display: flex;
     gap: 20px;
-    color:red;
+    /* color:red; */
     z-index:20;
     opacity:1;
 }
@@ -44,6 +53,7 @@
 }
 .topbar-social-icon:hover{
     color: var(--accentwine);
+    transform: scale(1.05); 
 }
 .topbar-icon{
     color: var(--accentwine);

@@ -3,7 +3,7 @@ import './Navbar.css';
 import logo from '../Assets/epwlogo.png';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faBars, faCartShopping } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
 function Navbar(){
@@ -27,12 +27,12 @@ function Navbar(){
       </div>
       <div className={`nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
         <ul>
-          <li><Link to="/Executive-Printing-Works/" onClick={() => handleNavigate('/')}>Home</Link></li>
-          <li><Link to="/about" onClick={() => handleNavigate('/about')}>About</Link></li>
-          <li><Link to="/detailedservices" onClick={() => handleNavigate('/detailedservices')}>Services</Link></li>
-          <li><Link to="/products" onClick={() => handleNavigate('/products')}>Products</Link></li>
-          {/* <li><Link to="/gallery" onClick={() => handleNavigate('/gallery')}>Gallery</Link></li> */}
-          <li><Link to="/contact" onClick={() => handleNavigate('/contact')}>Contact</Link></li>
+          <li><NavLink to="/Executive-Printing-Works/"  className={({ isActive }) => (isActive ? 'navactive' : '')} onClick={() => handleNavigate('/')}>Home</NavLink></li>
+          <li><NavLink to="/about"  className={({ isActive }) => (isActive ? 'navactive' : '')} onClick={() => handleNavigate('/about')}>About</NavLink></li>
+          <li><NavLink to="/detailedservices"  className={({ isActive }) => (isActive ? 'navactive' : '')} onClick={() => handleNavigate('/detailedservices')}>Services</NavLink></li>
+          <li><NavLink to="/products" className={({ isActive }) => (isActive ? 'navactive' : '')} onClick={() => handleNavigate('/products')}>Products</NavLink></li>
+          {/* <li><NavLink to="/gallery" onClick={() => handleNavigate('/gallery')}>Gallery</NavLink></li> */}
+          <li><NavLink to="/contact" className={({ isActive }) => (isActive ? 'navactive' : '')}  onClick={() => handleNavigate('/contact')}>Contact</NavLink></li>
         </ul>
       </div>
       <div className="nav-login">
